@@ -184,19 +184,19 @@
 </head>
 <body>
   <header>
-    <div class="header-left">Серёжа Кузнецов, диджитал дизайнер и арт-директор</div>
+    <div class="header-left">Sereja Kuznetsov, digital designer and art director</div>
     <!-- Контейнер для динамических табов, появляющихся в хедере при прокрутке -->
     <div class="header-right">
-      <a href="#skillset">Навыки</a>
-      <a href="#section-3">Портфолио</a>
-      <a href="#experience">Опыт</a>
-      <a href="text/resume.pdf" download>Резюме</a>
+      <a href="#skillset">Skillet</a>
+      <a href="#section-3">Portfolio</a>
+      <a href="#experience">Experience</a>
+      <a href="text/resume.pdf" download>CV</a>
     </div>
   </header>
 
   <main>
     <section id="general">
-      <div id="general-text" style="margin-top: 80px;">Загрузка информации...</div>
+      <div id="general-text" style="margin-top: 80px;">Info loading...</div>
     </section>
 
     <section id="skillset">
@@ -207,9 +207,9 @@
       <!-- Маркер для определения видимости секции портфолио -->
       <div id="portfolio-marker" style="height:1px;"></div>
       <div class="tabs">
-        <span class="tab active" data-type="i">Интерфейсы</span>
-        <span class="tab" data-type="b">Айдентика</span>
-        <span class="tab" data-type="g">Графика</span>
+        <span class="tab active" data-type="i">UI/UX design</span>
+        <span class="tab" data-type="b">Branding</span>
+        <span class="tab" data-type="g">Graphics</span>
       </div>
       <div id="folio-grid"></div>
     </section>
@@ -218,7 +218,7 @@
     <section id="section-5"></section>
   
 <section id="experience">
-  <div style="margin-top: 100px; margin-bottom: 40px;">Опыт работы</div>
+  <div style="margin-top: 100px; margin-bottom: 40px;">Work experience</div>
   <hr style="border: none; border-top: 1px solid #B0B0B0; margin-bottom: 60px;">
   <div id="experience-container"></div>
 </section>
@@ -239,7 +239,7 @@
 <script>
 // --- Подгрузка опыта работы ---
 fetch('text/experience.txt')
-  .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить опыт работы'))
+  .then(res => res.ok ? res.text() : Promise.reject('Failed to read from database!'))
   .then(text => {
     const blocks = text.split('\\').map(b => b.trim()).filter(Boolean);
     const container = document.getElementById('experience-container');
@@ -275,8 +275,8 @@ fetch('text/contact.txt')
 
     // Оборачиваем ключевые слова ссылками
     const linkedText = text
-      .replace(/(тг|телеграм)/gi, '<a href="https://t.me/javiejacie" style="color: #B0B0B0; text-decoration: none;">$1</a>')
-      .replace(/(имейл|email|мейл)/gi, '<a href="mailto:psjavie@gmail.com" style="color: #B0B0B0; text-decoration: none;">$1</a>');
+      .replace(/(тг|телеграм|telegram|tg)/gi, '<a href="https://t.me/javiejacie" style="color: #B0B0B0; text-decoration: none;">$1</a>')
+      .replace(/(имейл|email|мейл|e-mail)/gi, '<a href="mailto:psjavie@gmail.com" style="color: #B0B0B0; text-decoration: none;">$1</a>');
 
     // Разбиваем на строки и выводим каждую
     linkedText.split('\n').forEach(line => {
