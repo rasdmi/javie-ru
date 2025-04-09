@@ -1,8 +1,8 @@
-Хардскил. Проектирование интерфейсов веб и приложений, UI/UX, продуктовый и маркетинг дизайн. 
-Владение софтом. Figma, Sketch, Principle, Adobe XD, Photoshop, Illustrator, AfterEffects.
-UX экспертиза. Атомарные дизайн системы, модульный дизайн, интерактивное прототипирование. Умею мыслить UX и сценариями.
-Результат. Делаю дизайн, влияющий на бизнес метрики. Умею задавать вопросы.
-Мультискил. Полностью закрываю потребность бизнеса в дизайн обсепечении: помимо интерфейсов, умею в графический дизайн, айдентику, полиграфию, иллюстрацию и моушен.
-Артдир. Имею большой опыт управления творческим коллективом, умею выстраивать процессы и нести ответственность за результат. 
-В команде. Ценю труд и таланты коллег, выстраиваю экологичную коммуникацию. 
-Продукты. 8 лет опыта в продуктовом дизайне. Касдев, cjm, скрам, аджяйл. Понимаю принципы и правила разработки.
+Hard skills. Designing web and app interfaces, UI/UX, product and marketing design.
+Software proficiency. Figma, Sketch, Principle, Adobe XD, Photoshop, Illustrator, AfterEffects.
+UX expertise. Atomic design systems, modular design, interactive prototyping. I think in UX and scenarios.
+Results. I create design that impacts business metrics. I know how to ask the right questions.
+Multi-skill. I fully cover business needs in design support: beyond interfaces, I also do graphic design, branding, print, illustration, and motion.
+Art direction. I have extensive experience managing creative teams, setting up workflows, and taking responsibility for results.
+In a team. I value the work and talent of colleagues, and I build healthy communication.
+Products. 8 years of experience in product design. Custdev, CJM, Scrum, Agile. I understand development principles and processes.
