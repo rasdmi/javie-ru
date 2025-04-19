@@ -566,6 +566,92 @@
         }
       });
 
+      //КОД для тач девайсов чтобы ссылка сразу не прожималась
+      let currentActiveMagic = null;
+
+      const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+      if (isTouchDevice) {
+        document.body.addEventListener('click', (e) => {
+          const target = e.target.closest('.magic-word');
+
+          // Клик по магическому слову
+          if (target) {
+            const link = target.closest('a');
+
+            // Если уже активен — переходим по ссылке
+            if (currentActiveMagic === target) {
+              if (link && link.href) {
+                window.open(link.href, '_blank');
+              }
+              return;
+            }
+
+            // Иначе: показываем картинку + подчёркивание
+            e.preventDefault(); // отменяем переход по ссылке
+            e.stopPropagation();
+
+            // Убираем предыдущее
+            if (currentActiveMagic && currentActiveMagic !== target) {
+              currentActiveMagic.classList.remove('active-magic');
+              removeMagicImage();
+            }
+
+            currentActiveMagic = target;
+            target.classList.add('active-magic');
+            showMagicImage(target);
+          }
+
+          // Клик вне магического слова — сбрасываем
+          else if (currentActiveMagic) {
+            currentActiveMagic.classList.remove('active-magic');
+            removeMagicImage();
+            currentActiveMagic = null;
+          }
+        });
+      }
+
+      // Стиль подчёркивания
+      const style = document.createElement('style');
+      style.textContent = `
+  .active-magic {
+    text-decoration: underline;
+  }
+`;
+      document.head.appendChild(style);
+
+      // Показ картинки рядом с активным словом
+      function showMagicImage(el) {
+        const img = new Image();
+        img.src = `../exp/${el.dataset.img}.png`;
+        img.className = 'magic-popup';
+        img.style.position = 'absolute';
+        img.style.pointerEvents = 'none';
+        img.style.zIndex = 999;
+        img.style.imageRendering = 'auto';
+
+        img.onload = () => {
+          const realW = img.naturalWidth;
+          const realH = img.naturalHeight;
+          img.style.width = realW / 2 + 'px';
+          img.style.height = realH / 2 + 'px';
+
+          // позиция — рядом со словом
+          const rect = el.getBoundingClientRect();
+          img.style.left = `${rect.left + window.scrollX + 20}px`;
+          img.style.top = `${rect.top + window.scrollY + 20}px`;
+
+          document.body.appendChild(img);
+        };
+      }
+
+      // Удалить текущую всплывающую картинку
+      function removeMagicImage() {
+        const existing = document.querySelector('.magic-popup');
+        if (existing) existing.remove();
+      }
+
+
 
     </script>
 
