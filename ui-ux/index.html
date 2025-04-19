@@ -48,7 +48,7 @@
     }
 
     .magic-word {
-      color: #3f2aff;
+      color: #2a55ff;
       /* яркий фиолетово-синий */
       cursor: pointer;
       position: relative;
@@ -486,7 +486,7 @@
 
 
             const rightHTML = `
-        <div class="text-small-gray" style="font-weight: 400; color: #252525;">${company}</div>
+        <div class="text-small-gray" style="font-weight: 400; color: #252525;font-size: 0.8em;">${company}</div>
         <div class="text-small-gray" style="margin-top: 0px;">${position}</div>
         <div class="text-small-gray" style="color: #252525; max-width: 90%; margin-top: 32px;">${description}</div>
       `;
@@ -495,7 +495,7 @@
             block.className = "experience-block";
             block.style = "display: flex; gap: 40px; margin-bottom: 80px; font-weight: 400; color: #252525;";
             //тут сетку ломает
-            block.innerHTML = `<div style="flex: 1;" class="text-small-black">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
+            block.innerHTML = `<div style="flex: 1; color: #252525; font-weight: 400; font-size: 0.8em;">${year}</div><div style="flex: 3;margin-left: -24px;">${rightHTML}</div>`;
             container.appendChild(block);
           }
         })
