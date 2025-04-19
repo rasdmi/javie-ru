@@ -322,6 +322,11 @@
       }
     }
 
+    .experience-block {
+      flex-direction: column !important;
+      gap: 20px !important;
+    }
+
     @media (max-width: 480px) {
       body {
         font-size: calc(16px + 0.5vw);
@@ -485,6 +490,7 @@
       `;
 
             const block = document.createElement('div');
+            block.className = "experience-block";
             block.style = "display: flex; gap: 40px; margin-bottom: 80px; font-weight: 400; color: #252525;";
             block.innerHTML = `<div style="flex: 1;" class="text-small-black">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
             container.appendChild(block);
