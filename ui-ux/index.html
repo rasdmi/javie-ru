@@ -300,9 +300,7 @@
       <div id="general-text" style="margin-top: 80px;">Загрузка информации...</div>
     </section>
 
-    <section id="skillset">
-      <div id="skills-grid"></div>
-    </section>
+
 
     <section id="section-3">
       <!-- Маркер для определения видимости секции портфолио -->
@@ -313,6 +311,10 @@
         <span class="tab" data-type="g">Графика</span>
       </div>
       <div id="folio-grid"></div>
+    </section>
+
+    <section id="skillset">
+      <div id="skills-grid"></div>
     </section>
 
     <section id="section-4"></section>
@@ -389,6 +391,15 @@ fetch('../text/contact.txt')
   .catch(err => {
     document.getElementById('contact-container').textContent = 'Ошибка: ' + err;
   });
+
+// Подгружаем все картинки для интерфейсов, айдентики и графики сразу
+['i', 'b', 'g'].forEach(type => {
+  const count = type === 'b' ? 8 : 20;
+  for (let i = 1; i <= count; i++) {
+    const img = new Image();
+    img.src = `../pics/folio/p_${type}_${i}.png`;
+  }
+});
 
 </script>
 
