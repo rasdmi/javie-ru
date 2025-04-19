@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sereja Kuznetsov, senior designer in digital and communications</title>
+  <title>Сергей Кузнецов, UI/UX дизайнер</title>
 
   <!-- ✅ Подключаем шрифт -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;200;400;700&display=swap" rel="stylesheet">
 
   <style>
     /* === ОБЩИЕ СТИЛИ === */
@@ -25,6 +25,16 @@
       position: relative;
       overflow-x: hidden;
       font-weight: 400;
+    }
+    .text-small-black {
+    color: #252525;
+    font-size: calc(24px + 0.5vw); /* На 4 пункта меньше чем основной (28px + 0.5vw) */
+    font-weight: 400;
+    }
+    .text-small-gray {
+    color: #B0B0B0;
+    font-size: calc(18px + 0.5vw);
+    font-weight: 400;
     }
     .text-gray {
       color: #B0B0B0;
@@ -275,7 +285,7 @@
 </head>
 <body>
   <header>
-    <div class="header-left">Серёжа Кузнецов, диджитал дизайнер и арт-директор</div>
+    <div class="header-left">Серёжа Кузнецов, UI/UX дизайнер</div>
     <!-- Контейнер для динамических табов, появляющихся в хедере при прокрутке -->
     <div class="header-right">
       <a href="#skillset">Навыки</a>
@@ -342,13 +352,13 @@ fetch('text/experience.txt')
 
   const rightHTML = `
     <div style="font-weight: 400; color: #252525;">${company}</div>
-    <div class="text-gray" style="margin-top: 0px;">${position}</div>
-    <div class="text-gray" style="max-width: 90%; margin-top: 32px;">${description}</div>
+    <div class="text-small-gray" style="margin-top: 0px;">${position}</div>
+    <div class="text-small-gray" style="max-width: 90%; margin-top: 32px;">${description}</div>
   `;
 
   const block = document.createElement('div');
   block.style = "display: flex; gap: 40px; margin-bottom: 80px; font-weight: 400; color: #252525;";
-  block.innerHTML = `<div style="flex: 1;">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
+  block.innerHTML = `<div style="flex: 1;" class="text-small-black">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
   container.appendChild(block);
 }
 
@@ -430,11 +440,10 @@ fetch('text/text_skillset.txt')
       const block = document.createElement('div');
       block.className = 'skill-block';
       block.innerHTML = `
-        <img src="pics/icons/i${i + 1}.svg" alt="icon">
-        <h3>${title.trim()}</h3>
-        <p>${desc.trim().replace(/[^.]\s*$/, '$&.')}</p>
-
-      `;
+          <img src="pics/icons/i${i + 1}.svg" alt="icon">
+          <h3 class="text-small-black">${title.trim()}</h3>
+          <p class="text-small-gray">${desc.trim().replace(/[^.]\s*$/, '$&.')}</p>
+        `;
       container.appendChild(block);
     });
   })
