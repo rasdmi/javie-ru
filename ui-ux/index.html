@@ -48,7 +48,7 @@
     }
 
     .magic-word {
-      color: #7c3aed;
+      color: #3f2aff;
       /* яркий фиолетово-синий */
       cursor: pointer;
       position: relative;
@@ -479,7 +479,7 @@
 
 
             const rightHTML = `
-        <div style="font-weight: 400; color: #252525;">${company}</div>
+        <div class="text-small-gray" style="font-weight: 400; color: #252525;">${company}</div>
         <div class="text-small-gray" style="margin-top: 0px;">${position}</div>
         <div class="text-small-gray" style="color: #252525; max-width: 90%; margin-top: 32px;">${description}</div>
       `;
@@ -528,34 +528,44 @@
 
 
       // всплывающие фотки в опыте работы
-      document.addEventListener('DOMContentLoaded', () => {
-        document.body.addEventListener('mouseover', (e) => {
-          if (e.target.classList.contains('magic-word')) {
-            const img = document.createElement('img');
-            img.src = `../exp/${e.target.dataset.img}.png`;
-            img.className = 'magic-popup';
-            img.style.position = 'absolute';
-            img.style.pointerEvents = 'none';
-            //img.style.width = '200px';
-            //img.style.height = '200px';
-            img.style.zIndex = 999;
-            document.body.appendChild(img);
+      document.body.addEventListener('mouseover', (e) => {
+        if (e.target.classList.contains('magic-word')) {
+          const img = new Image();
+          img.src = `../exp/${e.target.dataset.img}.png`;
+          img.className = 'magic-popup';
+          img.style.position = 'absolute';
+          img.style.pointerEvents = 'none';
+          img.style.zIndex = 999;
+          img.style.imageRendering = 'auto';
 
-            function moveListener(ev) {
+          // дожидаемся загрузки картинки
+          img.onload = () => {
+            const realW = img.naturalWidth;
+            const realH = img.naturalHeight;
+
+            img.style.width = (realW / 2) + 'px';
+            img.style.height = (realH / 2) + 'px';
+
+            document.body.appendChild(img);
+          };
+
+          function moveListener(ev) {
+            if (img.complete) {
               img.style.left = `${ev.pageX + 20}px`;
               img.style.top = `${ev.pageY + 20}px`;
             }
-
-            moveListener(e); // позиционируем сразу
-            document.addEventListener('mousemove', moveListener);
-
-            e.target.addEventListener('mouseleave', () => {
-              img.remove();
-              document.removeEventListener('mousemove', moveListener);
-            }, { once: true });
           }
-        });
+
+          moveListener(e);
+          document.addEventListener('mousemove', moveListener);
+
+          e.target.addEventListener('mouseleave', () => {
+            img.remove();
+            document.removeEventListener('mousemove', moveListener);
+          }, { once: true });
+        }
       });
+
 
     </script>
 
