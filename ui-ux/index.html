@@ -47,6 +47,15 @@
       font-weight: 400;
     }
 
+    .magic-word {
+      color: #7c3aed;
+      /* яркий фиолетово-синий */
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+
     a {
       color: #B0B0B0;
       text-decoration: none;
@@ -439,6 +448,19 @@
             const position = blocks[i + 2] || '';
             let description = blocks[i + 3] || '';
 
+            // Заменяем {текст=картинка} или {текст} на span
+            description = description.replace(/\{([^}=]+)(=([^,}]+))?(,\s*([^}]+))?\}/g,
+              (_, word, _eq, img, _comma, link) => {
+                const filename = (img || word).trim();
+                const url = link ? link.trim() : null;
+                const content = `<span class="magic-word" data-img="${filename}">${word.trim()}</span>`;
+                return url
+                  ? `<a href="${url}" target="_blank" style="text-decoration: none;">${content}</a>`
+                  : content;
+              });
+
+
+
             if (description.includes('→')) {
               // Делим на основной текст и всё после первого →
               const firstArrowIndex = description.indexOf('→');
@@ -502,6 +524,37 @@
           const img = new Image();
           img.src = `../pics/folio/p_${type}_${i}.png`;
         }
+      });
+
+
+      // всплывающие фотки в опыте работы
+      document.addEventListener('DOMContentLoaded', () => {
+        document.body.addEventListener('mouseover', (e) => {
+          if (e.target.classList.contains('magic-word')) {
+            const img = document.createElement('img');
+            img.src = `../exp/${e.target.dataset.img}.png`;
+            img.className = 'magic-popup';
+            img.style.position = 'absolute';
+            img.style.pointerEvents = 'none';
+            //img.style.width = '200px';
+            //img.style.height = '200px';
+            img.style.zIndex = 999;
+            document.body.appendChild(img);
+
+            function moveListener(ev) {
+              img.style.left = `${ev.pageX + 20}px`;
+              img.style.top = `${ev.pageY + 20}px`;
+            }
+
+            moveListener(e); // позиционируем сразу
+            document.addEventListener('mousemove', moveListener);
+
+            e.target.addEventListener('mouseleave', () => {
+              img.remove();
+              document.removeEventListener('mousemove', moveListener);
+            }, { once: true });
+          }
+        });
       });
 
     </script>
