@@ -314,8 +314,6 @@ if (cached && cachedTime && now - cachedTime < cacheTTL) {
       const mainText = words.slice(0, -2).join(' ');
       const html = `${mainText} <a href="https://t.me/javiejacie" target="_blank">${linkText}</a>`;
       document.getElementById('general-text').innerHTML = html;
-      localStorage.setItem(cacheKey, html);
-      localStorage.setItem(cacheTimeKey, Date.now().toString());
     } else {
       document.getElementById('general-text').textContent = text;
     }
