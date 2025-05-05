@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Risk Intelligence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
+
+    img {
+      user-select: none;
+      pointer-events: none;
+      display: block;
+      image-rendering: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /*
+    ПРАВКА
+    header img,
+    .content img {
+      margin-top: -46px;
+      width: 1440px;
+      height: auto;
+      display: block;
+    }*/
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: black;
+      height: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: black;
+    }
+
+    header img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 120px;
+      /* или сколько нужно */
+      object-fit: cover;
+    }
+
+
+    .content img {
+      display: block;
+      margin-top: 0px;
+      width: 1440px;
+      height: auto;
+    }
+
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .nav {
+      position: absolute;
+      top: 152px;
+      left: 100px;
+      display: flex;
+      flex-direction: column;
+      pointer-events: all;
+      transition: none;
+    }
+
+    .nav-container.unstuck {
+      position: absolute;
+      top: 7820px;
+      /* фиксируем навигацию в том месте, где она должна "отлипнуть" */
+    }
+
+    .nav h1 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 26px;
+      margin: 0;
+      white-space: pre-line;
+      transition: none;
+    }
+
+    .nav-links {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+    }
+
+    .nav-link {
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      transition: none;
+    }
+
+    .nav-link.active {
+      color: #D64130 !important;
+    }
+
+    .indicator {
+      position: absolute;
+      height: 2px;
+      width: 140px;
+      background-color: #D64130;
+      top: 0;
+      left: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .fixed-header img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+    .indicator.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="fixed-header">
+    <img src="header.jpg" alt="Header Image" />
+  </header>
+
+  <div class="nav-container">
+    <nav class="nav" id="nav">
+      <h1 id="nav-title">RISK<br>INTELLIGENCE</h1>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" data-offset="0" href="#overview">Overview</a>
+        <a class="nav-link" data-offset="1250" href="#benefits">Benefits</a>
+        <a class="nav-link" data-offset="1850" href="#features">Features</a>
+        <a class="nav-link" data-offset="3735" href="#customers">Customers</a>
+        <a class="nav-link" data-offset="5720" href="#productsuite">Product Suite</a>
+        <a class="nav-link" data-offset="6700" href="#usecases">Use Cases</a>
+        <a class="nav-link" data-offset="7700" href="#faq">FAQ</a>
+        <div class="indicator" id="indicator"></div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="content">
+    <img src="body.jpg" alt="Body Image" draggable="false" />
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+    const indicator = document.getElementById('indicator');
+    const nav = document.getElementById('nav');
+    const title = document.getElementById('nav-title');
+
+    const sectionOffsets = [0, 1250, 1850, 3735, 5720, 6700, 7700];
+    let lastActiveIndex = -1;
+
+    function updateActive() {
+  const scrollY = window.scrollY;
+  let activeIndex = 0;
+
+  for (let i = 0; i < sectionOffsets.length; i++) {
+    if (scrollY >= sectionOffsets[i]) {
+      activeIndex = i;
+    }
+  }
+
+  const navTopBase = 200;
+  const itemHeight = 46;
+
+  const titleY = 371;
+  const crossedTitle = scrollY >= titleY + 720;
+
+  for (let i = links.length - 1; i >= 0; i--) {
+    const link = links[i];
+    const isActive = i === activeIndex;
+    const linkY = navTopBase + i * itemHeight;
+
+    link.classList.toggle('active', isActive);
+
+    if (isActive) {
+      link.style.color = '#D64130';
+    } else {
+      link.style.color = crossedTitle ? '#1A2C36' : 'white';
+    }
+  }
+
+  title.style.color = crossedTitle ? '#1A2C36' : 'white';
+
+  if (lastActiveIndex !== activeIndex) {
+    indicator.style.transformOrigin = 'left';
+    indicator.style.transform = 'scaleX(0)';
+
+    setTimeout(() => {
+      const hardcodedIndicatorPositions = [32, 72, 114, 156, 198, 240, 282];
+      indicator.style.top = `${hardcodedIndicatorPositions[activeIndex]}px`;
+
+      indicator.style.transformOrigin = 'left';
+      indicator.classList.add('visible');
+      indicator.style.transform = 'scaleX(1)';
+      indicator.style.opacity = '1';
+    }, 200);
+
+    lastActiveIndex = activeIndex;
+  }
+
+  const navContainer = document.querySelector('.nav-container');
+  navContainer.classList.toggle('unstuck', scrollY > 7820);
+}
+
+
+    window.addEventListener('scroll', updateActive);
+    window.addEventListener('load', updateActive);
+
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetOffset = parseInt(link.getAttribute('data-offset'));
+        window.scrollTo({ top: targetOffset, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+
+</html>
