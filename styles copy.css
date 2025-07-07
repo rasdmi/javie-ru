@@ -1,0 +1,314 @@
+/* Базовые настройки страницы */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F6FB;   /* 👈 общий фон страницы */
+    color: #222;
+  }
+  
+  /* Общие блоки (header, section, footer) без фиксированных рамок и фонов по умолчанию */
+  header, section, footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+/* Фоновое изображение в header */
+.site-header .container,
+.site-header .header-content,
+.site-header .header-nav {
+  position: relative;
+  z-index: 1;
+}
+
+
+.header-bg-image {
+  position: absolute;
+  bottom: 0;
+  right: -120px;
+  width: 600px;
+  height: auto;
+  background: url('pics/header_pic.png') no-repeat bottom right;
+  background-size: contain;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+  /* Исключение: первый блок (HEADER) с чёрным фоном */
+  .site-header {
+    position: relative;
+    background-color: #000;      /* 👈 ЧЁРНЫЙ ФОН только для хедера */
+    color: #fff;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Картинка на фоне в header */
+  .header-bg-image {
+    position: absolute;
+    bottom: 0;
+    right: -120px;   /* 👈 отступ от правого края: редактируйте здесь */
+    width: 600px;    /* 👈 размер изображения: редактируйте здесь */
+    height: auto;
+    background-image: url('pics/header_pic.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.8;    /* 👈 прозрачность: редактируйте здесь */
+    pointer-events: none;
+  }
+  
+  /* Навигация внутри header */
+  .header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;  /* 👈 внутренние отступы навигации */
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+  .header-nav a,
+  .header-nav .logo {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+  }
+  
+  .header-nav .nav-left a:last-child,
+  .header-nav .logo {
+    margin-right: 0;
+  }
+  
+  .header-nav .nav-right a {
+    margin-left: 20px;
+  }
+  
+  /* Основной контент в header */
+  .header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  .intro-text {
+    max-width: 600px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #fff;
+  }
+  
+  .header-title {
+    font-size: 72px;   /* 👈 размер заголовка на 1280px */
+    line-height: 1.1;
+    font-weight: 700;
+    margin: 0 0 40px;
+    color: #fff;
+  }
+  
+  .header-links a {
+    margin-right: 30px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .header-links a:last-child {
+    margin-right: 0;
+  }
+  
+  /* Остальные секции сайта (кроме header) */
+  .site-section {
+    background-color: #F5F6FB;   /* 👈 общий светлый фон */
+    color: #222;
+  }
+  
+  .site-section .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Заголовки */
+  h1, h2, h3 {
+    margin: 0 0 20px;
+    font-weight: 700;
+  }
+  
+  /* Адаптивный шрифт и масштабирование */
+  html {
+    font-size: 16px;
+  }
+  @media (max-width: 1280px) {
+    html {
+      font-size: calc(16px * (100vw / 1280));
+    }
+  }
+  @media (min-width: 1280px) {
+    body {
+      padding: 0;
+    }
+  }
+  
+ /* ====== UI/UX BLOCK ====== */
+
+.uiux-section {
+  background-color: #F5F6FB;
+  color: #222;
+}
+
+.uiux-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 17px;   /* 👉 поля слева/справа при 1280 */
+  box-sizing: border-box;
+}
+
+.uiux-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Деление колоночной ширины */
+.uiux-left {
+  flex: 1 1 calc(50% - 33px);  /* левая на 66px уже правой */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.uiux-right {
+  flex: 1 1 calc(50% + 33px);
+  display: flex;
+  min-width: 0;
+}
+
+/* Левая колонка - верх */
+.uiux-left-top {
+  padding-top: 40px;
+}
+
+.uiux-subheader {
+  font-size: 16px;
+  margin: 0 0 16px;
+  color: #222;
+}
+
+.uiux-header {
+  font-size: 48px;
+  line-height: 1.1;
+  margin: 0 0 24px;
+  font-weight: 700;
+}
+
+/* Теги */
+.uiux-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.uiux-tags .tag {
+  background-color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* CTA кнопка снизу */
+.uiux-cta {
+  align-self: flex-start;
+  height: 76px;
+  padding: 0 40px;
+  background-color: #EF5034;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 40px;
+  margin-top: 40px;
+}
+
+/* Правая колонка — карточка */
+.uiux-card {
+  background-color: #fff;
+  border-radius: 40px;
+  display: flex;
+  flex: 1;
+  padding-left: 66px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Внутри карточки — две колонки */
+.uiux-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+  min-width: 0;
+}
+
+.uiux-card-subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.uiux-card-description {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+.uiux-card-bottom-text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Блок справа с серым бэкграундом и картинкой */
+.uiux-card-image {
+  width: 273px;
+  background-color: #DBDBE1;
+  margin: 40px 0 40px 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.uiux-card-image-inner {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Картинка внутри блока */
+.uiux-card-image img {
+  width: 50%;    /* 👈 здесь ретина х2 уменьшается в х1 */
+  height: auto;
+  object-fit: contain;
+  /* 👇 можно менять этот размер для ретины */
+}

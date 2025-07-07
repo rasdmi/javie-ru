@@ -1,0 +1,1180 @@
+/* === ПЕРВЫЙ БЛОК (HEADER) =================================================== */
+
+/* Сам header-блок */
+.site-header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* 👈 Всегда на всю высоту окна */
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+/* Фоновое изображение */
+.site-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: -20px;
+  /* 👈 отступ от правого края */
+  width: 550px;
+  /* 👈 размер изображения */
+  height: 100%;
+  background: url('pics/header_pic.png') no-repeat bottom right;
+  background-size: contain;
+  opacity: 0.8;
+  /* 👈 прозрачность */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Контейнер в header */
+.site-header .container {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Навигация */
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.header-nav a,
+.header-nav .logo {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.header-nav .nav-left a:last-child,
+.header-nav .logo {
+  margin-right: 0;
+}
+
+.header-nav .nav-right a {
+  margin-left: 20px;
+}
+
+/* Контент внутри header */
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.intro-text {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.header-title {
+  font-size: 72px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.header-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+
+/* ======= БАЗОВЫЕ НАСТРОЙКИ ================================================= */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F5F6FB;
+  color: #0E0A0B;
+}
+
+header,
+section,
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Цвет текста на первом блоке */
+.site-header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  color: #F5F6FB;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: -20px;
+  width: 550px;
+  height: 100%;
+  background: url('pics/header_pic.png') no-repeat bottom right;
+  background-size: contain;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-header .container {
+  position: relative;
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.header-nav a,
+.header-nav .logo {
+  color: #F5F6FB;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.header-nav .nav-left a:last-child,
+.header-nav .logo {
+  margin-right: 0;
+}
+
+.header-nav .nav-right a {
+  margin-left: 20px;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.intro-text {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #F5F6FB;
+}
+
+.header-title {
+  font-size: 120px;
+  line-height: 138px;
+  font-weight: 400;
+  letter-spacing: -3%;
+  margin: 0;
+  color: #F5F6FB;
+}
+
+.header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.header-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+}
+
+/* ======= ТЕКСТОВЫЕ СТИЛИ ======================================================== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 120px;
+  line-height: 138px;
+  letter-spacing: -3%;
+  color: inherit;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 73px;
+  letter-spacing: -3%;
+  color: inherit;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: -3%;
+  color: inherit;
+}
+
+p,
+.p1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: inherit;
+}
+
+.p2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: inherit;
+}
+
+.p3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: -1%;
+  color: inherit;
+}
+
+/* ======= ССЫЛКИ ======= */
+a {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+a:hover {
+  color: #47B5FF;
+}
+
+a:active {
+  color: #2196E4;
+}
+
+a.type-2 {
+  opacity: 0.7;
+}
+
+a.type-2:hover {
+  opacity: 1;
+}
+
+/* ======= КНОПКИ-СЫЛКИ РЫЖИЕ ======= */
+.link-orange {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: #F05536;
+  text-decoration: none;  /* убираем общее подчеркивание */
+}
+
+.link-orange .link-text {
+  text-decoration: underline;  /* подчеркивание только текста */
+}
+
+.link-orange .link-icon {
+  display: inline-block;
+  width: 20px;      /* настрой размер стрелки */
+  height: 20px;
+  margin-left: 8px; /* отступ от текста */
+  background-image: url('pics/arrow.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ======= КНОПКИ-СЫЛКИ ОБЫЧНЫЕ ======= */
+.link-default {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: #080607;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.link-default:active {
+  color: #F05536;
+}
+
+/* ======= КНОПКИ ТИП-1 (РЫЖИЕ) ======= */
+.button-orange {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  padding: 0 10px;
+  background-color: #F05536;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+/* ======= КНОПКИ ТИП-2 (ОБВОДКА) ======= */
+.button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 76px;
+  padding: 0 10px;
+  background: none;
+  color: #080607;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid;
+  border-image: linear-gradient(45deg, #fff, #000);
+  border-image-slice: 1;
+  transition: opacity 0.2s;
+}
+
+/* ======= ТЕГИ БЕЙДЖИКИ ======= */
+
+.tag {
+  height: 28px;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  /* 👇 Добавляем текстовые стили для бейджиков */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: -1%;
+  color: inherit;
+}
+
+
+.button-outline:hover {
+  opacity: 0.9;
+}
+
+/* ======= СЕКЦИИ (НЕ HEADER) ======= */
+.site-section {
+  background-color: #F5F6FB;
+  color: #0E0A0B;
+}
+
+.site-section .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* ======= АДАПТИВНЫЙ ШРИФТ И МАСШТАБ ======= */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 1280px) {
+  html {
+    font-size: calc(16px * (100vw / 1280));
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    padding: 0;
+  }
+}
+
+/* Убрать отступы у заголовков слева!!!!!!!!!!!!!!!!!!!!!!!! */
+.product-top-left h1,
+.product-top-left h2,
+.product-top-left h3 {
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* Убрать отступы у параграфов справа */
+.product-top-right p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
+}
+
+.branding-top h2 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+}
+
+/* ======= БЛОК ПЕРВЫЙ UI UX======================================================== */
+
+.uiux-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.uiux-section {
+  background-color: #F5F6FB;
+  color: #0E0A0B;
+  height: 600px;
+}
+
+.uiux-container {
+  max-width: 1280px;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  margin: 0 auto;
+  padding: 40px 17px;
+  box-sizing: border-box;
+}
+
+.uiux-grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*ЛЕВА КОЛОНКА*/
+.uiux-left {
+  flex: 1 1 calc(30%);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.uiux-left-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding-top: 40px;
+}
+
+.uiux-subheader {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  margin: 0 0 16px;
+  color: #0E0A0B;
+}
+
+.uiux-header {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 73px;
+  letter-spacing: -3%;
+  margin: 0 0 24px;
+  color: #0E0A0B;
+}
+
+.uiux-left .p1 {
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+/* CTA кнопка снизу */
+.button-orange {
+  display: inline-block;
+  height: 76px;
+  padding: 0 32px;
+  background-color: #F05536;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+  width: auto;
+  white-space: nowrap;
+}
+
+.button-orange:hover {
+  background-color: #FF6344;
+}
+
+.button-orange:active {
+  background-color: #EC4928;
+}
+
+/* Правая колонка */
+.uiux-right {
+  flex: 1 1 calc(45%);
+  min-width: 0;
+}
+
+.uiux-card {
+  background-color: #fff;
+  border-radius: 40px;
+  display: flex;
+  flex: 1;
+  padding-left: 66px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Внутри карточки — две колонки */
+.uiux-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 0;
+  min-width: 0;
+}
+
+.uiux-card-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  margin-bottom: 16px;
+  color: #0E0A0B;
+}
+
+.uiux-card-description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  margin-bottom: 40px;
+  color: #0E0A0B;
+}
+
+.uiux-card-bottom-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: #0E0A0B;
+}
+
+/* Правая картинка в карточке */
+.uiux-card-image {
+  width: 273px;
+  /* 👈 настраивай размер */
+  background-color: #DBDBE1;
+  margin: 40px 0 40px 40px;
+  /* 👈 настраивай отступы */
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+
+.uiux-card-image img {
+  width: 200%;
+  margin-top: 60px;
+  /* увеличь масштаб, чтобы было что обрезать */
+  margin-left: -300px;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+/* ======= БЛОК ВТОРОЙ PRODUCT ======================================================== */
+
+/* ======== 3_PRODUCT SECTION =========== */
+
+.product-section {
+  background-color: #F5F6FB;
+  color: #0E0A0B;
+  padding: 40px 0;
+}
+
+.product-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 17px;
+  box-sizing: border-box;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: auto;
+  min-height: 600px;
+
+}
+
+/* ======== TOP PART ======== */
+
+.product-top {
+  display: flex;
+  gap: 20px;
+  flex: 1 1 0;
+  align-items: flex-start;
+    margin-top: 30px;     /* 👈 сверху 40px */
+  margin-bottom: 20px;  /* 👈 снизу 20px */
+}
+
+.product-top-left {
+  flex: 1 1 calc(40.5%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.product-tags .tag {
+  background-color: #F5F6FB;
+  height: 28px;
+  padding: 0 20px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.product-top-right {
+  flex: 1 1 calc(45%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: flex-start;
+  margin-top: 12px;
+  /* 👈 Сдвигаем вниз на 12px */
+
+}
+
+/* ======== BOTTOM PART ======== */
+
+.product-bottom {
+  display: flex;
+  gap: 20px;
+  flex: 1 1 0;
+  height: 420px;
+}
+
+/* Первая колонка: текст */
+.product-col-text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-col-text h3 {
+  margin: 0;
+}
+
+.product-col-text .button-orange {
+  align-self: flex-start;
+  padding: 0 32px;
+}
+
+/* Вторая и третья колонки: картинки */
+.product-col-image {
+  width: 400px;
+  height: 420px;
+  background-color: #EBEDFA;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.product-image-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+/* Картинка внутри блока с возможностью сдвига */
+.product-col-image-2 img {
+  width: 120%;
+  /* 👉 настраивай размер для второй колонки */
+  margin-left: 40px;
+  /* 👉 настраивай сдвиг отдельно */
+  margin-top: 92px;
+}
+
+.product-col-image-3 img {
+  width: 165%;
+  /* 👉 настраивай размер для третьей колонки */
+  margin-left: -140px;
+  /* 👉 настраивай сдвиг отдельно */
+}
+
+/* Заголовок внутри второй картинки */
+.product-image-title {
+  position: absolute;
+  top: 27px;
+  left: 37px;
+  margin: 0;
+  color: #0E0A0B;
+}
+
+/* Заголовок внутри третьей картинки (внизу) */
+.product-image-title-bottom {
+  position: absolute;
+  bottom: 34px;
+  left: 37px;
+  margin: 0;
+  color: #ffffff;
+}
+
+
+/* ======= БЛОК ТРЕТИЙ БРЕНДИНГ ======================================================== */
+
+/* ======== 4_BRANDING SECTION =========== */
+
+/* ====== BRANDING BLOCK ======= */
+
+.branding-section {
+  background-color: #F5F6FB;
+  color: #0E0A0B;
+  padding: 40px 0;
+}
+
+.branding-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 17px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Верхняя часть */
+.branding-top {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  height: 544px;
+}
+
+/* Левая колонка */
+.branding-top-left {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.branding-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.branding-tags .tag {
+  background-color: #fff;
+  height: 28px;
+  padding: 0 20px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Правая колонка с большой картинкой */
+.branding-top-right {
+  flex: 1 1 calc(52%);
+  position: relative;
+  overflow: hidden;
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+    height: 100%;
+}
+
+.branding-image-box {
+  position: relative;
+  width: 555px;
+  height: 555px;
+  overflow: hidden;
+  border-radius: 40px;
+  background-color: #DBDBE1;
+}
+
+.branding-image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220%;
+  height: 140%;
+  margin-left: -570px;
+  margin-top: -100px;
+  object-fit: cover;
+}
+
+/* Нижняя часть */
+.branding-bottom {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+
+  flex-wrap: wrap;
+}
+
+
+
+.branding-bottom-left .link-orange {
+  align-self: flex-start;
+}
+
+/* Правая колонка с маленькой картинкой */
+.branding-bottom-right {
+  width: 200px;
+  height: 200px;
+  background-color: #DBDBE1;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.branding-box-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+.branding-box-image img {
+  width: 150%;         /* 👉 регулируй размер тут */
+  margin-left: -66px;  /* 👉 регулируй отступ тут */
+  margin-top: -30px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.branding-right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.branding-right-bottom {
+  flex: 0 0 auto;
+}
+
+.branding-bottom-grid {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.branding-bottom-left {
+  flex: 1 1 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.branding-bottom-right {
+  width: 200px;
+  height: 200px;
+  background-color: #DBDBE1;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ======= БЛОК ТРЕТИЙ ГРАФ ДИЗАЙН  ======================================================== */
+
+/* ======= ГЛАВНАЯ СЕКЦИЯ ======= */
+.graphic-section {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #000;
+  color: #F5F6FB;
+  box-sizing: border-box;
+  border-radius: 40px;
+}
+
+.graphic-container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+    
+}
+
+/* ======= ВЕРХНЯЯ ЧАСТЬ ======= */
+
+
+
+.graphic-top-left .p2 {
+  color: #F5F6FB;
+}
+
+.graphic-top-right {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.graphic-top-right h2 {
+  color: #F5F6FB;
+  margin: 24px 0;
+}
+
+/* ======= ССЫЛКА С СО СТРЕЛКОЙ ======= */
+.graphic-top-right .link-orange {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -1%;
+  color: #F05536;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.graphic-top-right .link-orange::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('pics/arrow.svg') no-repeat center;
+  background-size: contain;
+  margin-left: 4px;
+  text-decoration: none;
+}
+
+/* ======= НИЖНЯЯ СЕКЦИЯ ======= */
+.graphic-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* ======= КАРТОЧКА-БЛОК ======= */
+.graphic-block {
+  position: relative;
+  width: 250px;
+  height: 275px;
+  background-color: #111;
+  border-radius: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #F5F6FB;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s ease;
+  transform: rotate(-10deg);
+}
+
+.graphic-block h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #F5F6FB;
+}
+
+.graphic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.graphic-tags .tag {
+  background-color: #fff;
+  height: 28px;
+  padding: 0 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #222;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* ======= ПОДЛОЖКА НА ХОВЕР ======= */
+.graphic-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+.graphic-block:hover::before {
+  opacity: 0.7;
+}
+
+.graphic-block:nth-child(1):hover::before {
+  background-color: #B0F4BD;
+}
+.graphic-block:nth-child(2):hover::before {
+  background-color: #EEF1F0;
+}
+.graphic-block:nth-child(3):hover::before {
+  background-color: #25A9C4;
+}
+.graphic-block:nth-child(4):hover::before {
+  background-color: #435D93;
+}
+.graphic-block:nth-child(5):hover::before {
+  background-color: #EEF1F0;
+}
+
+/* ======= ПРАВЫЙ ПРЯМОУГОЛЬНИК С КАРТИНКОЙ ======= */
+.graphic-image-box {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 250px;
+  height: 275px;
+  border-radius: 36px;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s;
+  pointer-events: none;
+}
+
+.graphic-image-box img {
+  width: 120%;         /* 👉 настраивай масштаб тут */
+  margin-left: -40px;  /* 👉 настраивай сдвиг тут */
+  margin-top: -30px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transform: rotate(10deg);
+}
