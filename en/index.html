@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sergey Kuznetsov, digital designer and art director</title>
+
+  <!-- ✅ Подключаем шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* === ОБЩИЕ СТИЛИ === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #ffffff;
+      padding: 0;
+      color: #252525;
+      font-size: calc(28px + 0.5vw);
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+      font-weight: 400;
+    }
+    .text-gray {
+      color: #B0B0B0;
+      font-weight: 400;
+    }
+    a {
+      color: #B0B0B0;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+      /* Нижняя граница убрана */
+    }
+    /* Левая часть хедера – по умолчанию отображается текст */
+    .header-left {
+      white-space: nowrap;
+      z-index: 101;
+    }
+    /* Правая часть хедера – навигационные ссылки */
+    .header-right {
+      display: flex;
+      gap: 44px;
+      justify-content: flex-end;
+      flex-grow: 1;
+      position: relative;
+      z-index: 102;
+    }
+    /* Контейнер для табов, появляющихся в хедере при прокрутке */
+    .header-tabs {
+      display: none;
+      position: absolute;
+      left: 40px;
+      top: 0;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      z-index: 103;
+    }
+    .header-tabs span {
+      cursor: pointer;
+      font-weight: 400;
+      color: #B0B0B0;
+    }
+    .header-tabs span.active {
+      color: #252525;
+    }
+    main {
+      padding: 40px;
+    }
+    section {
+      margin-bottom: 300px;
+    }
+    #general-text {
+      max-width: 75vw;
+    }
+    /* --- Секция Навыков (секция 2) --- */
+    #skillset {
+      font-size: 90%; /* Уменьшаем шрифт на 10% */
+    }
+    #skills-grid, #folio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+    .skill-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-weight: 400;
+      color: #252525;
+    }
+    /* Уменьшенные иконки в секции Навыков */
+    .skill-block img {
+      width: 108px;  /* 120px * 0.9 */
+      height: 108px; /* 120px * 0.9 */
+      margin-bottom: 14px; /* 16px * 0.9 */
+    }
+    .skill-block h3 {
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: #252525;
+    }
+    .skill-block p {
+      color: #B0B0B0;
+      font-weight: 400;
+    }
+    .floating-image {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      opacity: 1;
+      z-index: 200;
+    }
+    /* Навигация портфолио – выравнивание по левому краю */
+    .tabs {
+      display: flex;
+      justify-content: flex-start;
+      gap: 44px;
+      margin: 80px 0;
+    }
+    .tabs span {
+      cursor: pointer;
+      font-weight: 400;
+      color: #B0B0B0;
+    }
+    .tabs span.active {
+      color: #252525;
+    }
+    /* Обертка для карточки работы */
+    .folio-item {
+      position: relative;
+      width: 100%;
+    }
+    .folio-item img {
+      width: 100%;
+      display: block;
+    }
+    .folio-caption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-weight: 400;
+      font-size: 80%; /* уменьшение на 20% */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      text-align: center;
+      padding: 10px;
+    }
+    .folio-item:hover .folio-caption {
+      opacity: 1;
+    }
+    /* --- Медиа-запрос для уменьшения текста в хедере при ширине окна меньше 1900px --- */
+    @media (max-width: 1900px) {
+      header {
+        font-size: 0.6em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">Sergey Kuznetsov, digital designer and art director</div>
+    <!-- Контейнер для динамических табов, появляющихся в хедере при прокрутке -->
+    <div class="header-right">
+      <a href="#skillset">Skillet</a>
+      <a href="#section-3">Portfolio</a>
+      <a href="#experience">Experience</a>
+      <a href="text/resume.pdf" download>CV</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="general">
+      <div id="general-text" style="margin-top: 80px;">Info loading...</div>
+    </section>
+
+    <section id="skillset">
+      <div id="skills-grid"></div>
+    </section>
+
+    <section id="section-3">
+      <!-- Маркер для определения видимости секции портфолио -->
+      <div id="portfolio-marker" style="height:1px;"></div>
+      <div class="tabs">
+        <span class="tab active" data-type="i">UI/UX design</span>
+        <span class="tab" data-type="b">Branding</span>
+        <span class="tab" data-type="g">Graphics</span>
+      </div>
+      <div id="folio-grid"></div>
+    </section>
+
+    <section id="section-4"></section>
+    <section id="section-5"></section>
+  
+<section id="experience">
+  <div style="margin-top: 100px; margin-bottom: 40px;">Work experience</div>
+  <hr style="border: none; border-top: 1px solid #B0B0B0; margin-bottom: 60px;">
+  <div id="experience-container"></div>
+</section>
+
+<section id="contacts">
+  <hr style="border: none; border-top: 1px solid #B0B0B0; margin-bottom: 60px;">
+  <div id="contact-container"></div>
+</section>
+
+<footer style="display: flex; justify-content: space-between; margin-top: 120px; padding: 0px;">
+  <div style="display: flex; gap: 36px;">
+    <a href="https://www.linkedin.com/in/javiejacie" style="text-decoration: none;">Linkedin</a>
+    <a href="https://www.instagram.com/sklator" style="text-decoration: none;">Instagram</a>
+  </div>
+  <div>Javie.ru © 2025</div>
+</footer>
+
+<script>
+// --- Подгрузка опыта работы ---
+fetch('text/experience.txt')
+  .then(res => res.ok ? res.text() : Promise.reject('Failed to read from database!'))
+  .then(text => {
+    const blocks = text.split('\\').map(b => b.trim()).filter(Boolean);
+    const container = document.getElementById('experience-container');
+    for (let i = 0; i < blocks.length; i += 4) {
+  const year = blocks[i] || '';
+  const company = blocks[i + 1] || '';
+  const position = blocks[i + 2] || '';
+  const description = blocks[i + 3] || '';
+
+  const rightHTML = `
+    <div style="font-weight: 400; color: #252525;">${company}</div>
+    <div class="text-gray" style="margin-top: 0px;">${position}</div>
+    <div class="text-gray" style="max-width: 90%; margin-top: 32px;">${description}</div>
+  `;
+
+  const block = document.createElement('div');
+  block.style = "display: flex; gap: 40px; margin-bottom: 80px; font-weight: 400; color: #252525;";
+  block.innerHTML = `<div style="flex: 1;">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
+  container.appendChild(block);
+}
+
+
+  })
+  .catch(err => {
+    document.getElementById('experience-container').textContent = 'Ошибка: ' + err;
+  });
+
+// --- Подгрузка контактов ---
+fetch('text/contact.txt')
+  .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить контакты'))
+  .then(text => {
+    const container = document.getElementById('contact-container');
+
+    // Оборачиваем ключевые слова ссылками
+    const linkedText = text
+      .replace(/(тг|телеграм|telegram|tg)/gi, '<a href="https://t.me/javiejacie" style="color: #B0B0B0; text-decoration: none;">$1</a>')
+      .replace(/(имейл|email|мейл|e-mail)/gi, '<a href="mailto:psjavie@gmail.com" style="color: #B0B0B0; text-decoration: none;">$1</a>');
+
+    // Разбиваем на строки и выводим каждую
+    linkedText.split('\n').forEach(line => {
+      const div = document.createElement('div');
+      div.innerHTML = line.trim();
+      container.appendChild(div);
+    });
+  })
+  .catch(err => {
+    document.getElementById('contact-container').textContent = 'Ошибка: ' + err;
+  });
+
+</script>
+
+</main>
+  
+<script>
+// --- Подгрузка текста в секции General с кэшем ---
+const cacheKey = 'general-text-cache';
+const cacheTimeKey = 'general-text-cache-time';
+const cacheTTL = 2 * 60 * 1000; // 2 минуты
+const cached = localStorage.getItem(cacheKey);
+const cachedTime = localStorage.getItem(cacheTimeKey);
+const now = Date.now();
+
+if (cached && cachedTime && now - cachedTime < cacheTTL) {
+  document.getElementById('general-text').innerHTML = cached;
+} else {
+  fetch('text/text_general.txt')
+  .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить текст'))
+  .then(text => {
+    const words = text.trim().split(/\s+/);
+    if (words.length >= 2) {
+      const linkText = words.slice(-2).join(' ');
+      const mainText = words.slice(0, -2).join(' ');
+      const html = `${mainText} <a href="https://t.me/javiejacie" target="_blank">${linkText}</a>`;
+      document.getElementById('general-text').innerHTML = html;
+    } else {
+      document.getElementById('general-text').textContent = text;
+    }
+  })
+  .catch(err => {
+    document.getElementById('general-text').textContent = 'Ошибка: ' + err;
+  });
+
+}
+setInterval(() => {
+  localStorage.removeItem(cacheKey);
+  localStorage.removeItem(cacheTimeKey);
+}, cacheTTL);
+
+// --- Подгрузка скиллсета ---
+fetch('text/text_skillset.txt')
+  .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить скиллсет'))
+  .then(text => {
+    const blocks = text.split('\n').filter(Boolean);
+    const container = document.getElementById('skills-grid');
+    blocks.forEach((line, i) => {
+      const [title, desc] = line.split('.');
+      const block = document.createElement('div');
+      block.className = 'skill-block';
+      block.innerHTML = `
+        <img src="pics/icons/i${i + 1}.svg" alt="icon">
+        <h3>${title.trim()}</h3>
+        <p>${desc.trim().replace(/[^.]\s*$/, '$&.')}</p>
+
+      `;
+      container.appendChild(block);
+    });
+  })
+  .catch(err => {
+    document.getElementById('skills-grid').textContent = 'Ошибка: ' + err;
+  });
+
+// --- Подгрузка портфолио с подписями ---
+const tabElements = document.querySelectorAll('.tabs .tab');
+const folioGrid = document.getElementById('folio-grid');
+
+// Функция для загрузки текстов для hover (folio1.txt, folio2.txt, folio3.txt)
+function fetchFolioTexts(type) {
+  let fileName;
+  if(type === 'i'){
+    fileName = 'folio1.txt';
+  } else if(type === 'b'){
+    fileName = 'folio2.txt';
+  } else if(type === 'g'){
+    fileName = 'folio3.txt';
+  } else {
+    fileName = 'folio1.txt';
+  }
+  return fetch(`text/${fileName}`)
+    .then(res => res.ok ? res.text() : Promise.reject(`${fileName} not found`))
+    .then(text => text.split('.').map(t => t.trim()).filter(t => t.length));
+}
+
+function loadFolio(type) {
+  folioGrid.innerHTML = '';
+  let count = type === 'b' ? 8 : 20;
+  fetchFolioTexts(type)
+    .then(folioTexts => {
+      for (let i = 1; i <= count; i++) {
+        const div = document.createElement('div');
+        div.className = 'folio-item';
+        const img = document.createElement('img');
+        img.src = `pics/folio/p_${type}_${i}.png`;
+        const caption = document.createElement('div');
+        caption.className = 'folio-caption';
+        caption.textContent = folioTexts[i - 1] || '';
+        div.appendChild(img);
+        div.appendChild(caption);
+        folioGrid.appendChild(div);
+      }
+    })
+    .catch(err => {
+      folioGrid.textContent = 'Ошибка: ' + err;
+    });
+}
+// Загружаем по умолчанию раздел "Интерфейсы"
+loadFolio('i');
+
+// Обработчик для табов портфолио
+tabElements.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabElements.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    loadFolio(tab.dataset.type);
+    updateHeaderTabsActive();
+  });
+});
+
+
+
+// --- Эффект с фото курсора ---
+const totalImages = 25;
+let lastX = 0;
+let lastY = 0;
+let photoQueue = [];
+let idleTimeout;
+let isClearing = false;
+let cancelClear = false;
+
+function clearOldPhotos() {
+  if (cancelClear) {
+    isClearing = false;
+    cancelClear = false;
+    return;
+  }
+  if (photoQueue.length === 0) {
+    isClearing = false;
+    return;
+  }
+  const img = photoQueue.shift();
+  if (img && img.parentNode) {
+    img.remove();
+  }
+  setTimeout(clearOldPhotos, 20);
+}
+
+document.addEventListener('mousemove', (e) => {
+  const dx = Math.abs(e.pageX - lastX);
+  const dy = Math.abs(e.pageY - lastY);
+  if (dx > 0 || dy > 0) {
+    clearTimeout(idleTimeout);
+    cancelClear = true;
+    idleTimeout = setTimeout(() => {
+      if (!isClearing) {
+        isClearing = true;
+        cancelClear = false;
+        clearOldPhotos();
+      }
+    }, 20);
+  }
+  if (dx >= 10 || dy >= 10) {
+    const img = document.createElement('img');
+    img.className = 'floating-image';
+    const number = Math.floor(Math.random() * totalImages) + 1;
+    img.src = `pics/me/${number}.png`;
+    img.style.left = `${e.pageX + 20}px`;
+    img.style.top = `${e.pageY + 20}px`;
+    img.style.width = '200px';
+    img.style.height = '200px';
+    document.body.appendChild(img);
+    photoQueue.push(img);
+    lastX = e.pageX;
+    lastY = e.pageY;
+  }
+});
+
+// --- Плавный скролл по навигационным ссылкам ---
+document.querySelectorAll('header a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if(targetElement) {
+      const headerOffset = 100; // смещение, чтобы контент не скрывался под хедером
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>
