@@ -1,15 +1,12 @@
-/* === ПЕРВЫЙ БЛОК (HEADER) =================================================== */
+html {
+  scroll-behavior: smooth;
+}
 
-/* Сам header-блок */
-.site-header {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  /* 👈 Всегда на всю высоту окна */
-  background-color: #000;
-  color: #fff;
-  overflow: hidden;
-  box-sizing: border-box;
+/* === ПЕРВЫЙ БЛОК (HEADER) =================================================== */
+.logo,
+.sticky-name {
+  text-decoration: none;
+  color: inherit;
 }
 
 
@@ -42,37 +39,27 @@
 }
 
 /* Навигация */
-.header-nav {
+
+
+.header-nav .nav-left {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  align-items: center;
+  gap: 12px;
 }
 
-.header-nav a,
-.header-nav .logo {
-  color: #fff;
-  text-decoration: none;
-  margin-right: 20px;
-  font-size: 16px;
+.header-nav .nav-left .logo {
+  margin-right: 29px;
+  color: #ffffff;
 }
 
-.header-nav .nav-left a:last-child,
-.header-nav .logo {
-  margin-right: 0;
-}
-
-.header-nav .nav-right a {
-  margin-left: 20px;
+.header-nav .nav-right {
+  display: flex;
+  gap: 12px;
 }
 
 /* Контент внутри header */
-.header-content {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
+
 
 .intro-text {
   max-width: 600px;
@@ -93,6 +80,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  align-items: center;
+  /* 👈 центр по высоте */
+
 }
 
 .header-links a {
@@ -127,6 +117,8 @@ footer {
   position: relative;
   width: 100%;
   height: 100vh;
+  max-height: 940px;
+  /* вот тут оставить */
   background-color: #000;
   color: #F5F6FB;
   overflow: hidden;
@@ -146,6 +138,8 @@ footer {
   pointer-events: none;
   z-index: 0;
 }
+
+
 
 .site-header .container {
   position: relative;
@@ -173,22 +167,24 @@ footer {
   color: #F5F6FB;
   text-decoration: none;
   margin-right: 20px;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .header-nav .nav-left a:last-child,
 .header-nav .logo {
   margin-right: 0;
+
 }
 
-.header-nav .nav-right a {
-  margin-left: 20px;
+
+.header-nav .nav-left a {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .header-content {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+
 }
 
 .intro-text {
@@ -205,6 +201,14 @@ footer {
   letter-spacing: -3%;
   margin: 0;
   color: #F5F6FB;
+}
+
+.header-content .intro-text {
+  margin-bottom: 39px;
+}
+
+.header-content .header-title {
+  margin-bottom: 30px;
 }
 
 .header-links {
@@ -305,6 +309,8 @@ a.type-2:hover {
   opacity: 1;
 }
 
+
+
 /* ======= КНОПКИ-СЫЛКИ РЫЖИЕ ======= */
 .link-orange {
   display: inline-flex;
@@ -318,6 +324,13 @@ a.type-2:hover {
   text-decoration: none;
   /* убираем общее подчеркивание */
 }
+
+.link-orange:hover {
+  color: #ff694b;
+  text-decoration: none;
+
+}
+
 
 .link-orange .link-text {
   text-decoration: underline;
@@ -337,6 +350,13 @@ a.type-2:hover {
   background-position: center;
 }
 
+.link-orange:hover,
+.link-orange:hover .link-text {
+  color: #F05536;
+  text-decoration: none;
+}
+
+
 /* ======= КНОПКИ-СЫЛКИ ОБЫЧНЫЕ ======= */
 .link-default {
   font-family: 'Inter', sans-serif;
@@ -354,7 +374,8 @@ a.type-2:hover {
 }
 
 /* ======= КНОПКИ ТИП-1 (РЫЖИЕ) ======= */
-.button-orange {
+.button-orange,
+a.button-orange {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -372,6 +393,12 @@ a.type-2:hover {
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.2s;
+  
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* ======= КНОПКИ ТИП-2 (ОБВОДКА) ======= */
@@ -559,6 +586,11 @@ p {
 .uiux-left .p1 {
   max-width: 600px;
   margin-bottom: 40px;
+}
+
+.uiux-left .button-orange {
+  margin-bottom: 32px;
+  
 }
 
 /* CTA кнопка снизу */
@@ -1396,7 +1428,7 @@ p {
 
 #artdir3_pic {
   background-color: #e9edf3;
-  object-fit:scale-down;
+  object-fit: scale-down;
 
 }
 
@@ -1462,7 +1494,7 @@ p {
   object-fit: cover;
   display: block;
   border-radius: 40px;
-   object-position: -180px  center;
+  object-position: -180px center;
 
 
 }
@@ -1738,6 +1770,7 @@ p {
 .socials-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
+
 .socials-scroll-wrapper {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -1799,18 +1832,57 @@ p {
   margin-top: 56px;
 }
 
-.socials-item:nth-child(1) img { height: 347px; }
-.socials-item:nth-child(2) img { height: 257px; }
-.socials-item:nth-child(3) img { height: 257px; }
-.socials-item:nth-child(4) img { height: 390px; }
-.socials-item:nth-child(5) img { height: 276px; }
+.socials-item:nth-child(1) img {
+  height: 347px;
+}
 
+.socials-item:nth-child(2) img {
+  height: 257px;
+}
+
+.socials-item:nth-child(3) img {
+  height: 257px;
+}
+
+.socials-item:nth-child(4) img {
+  height: 390px;
+}
+
+.socials-item:nth-child(5) img {
+  height: 276px;
+}
+
+/* ======= правки ховера соцсетей  */
+
+
+.socials-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.socials-item img {
+  transition: opacity 0.3s;
+}
+
+.socials-item p {
+  transition: color 0.3s;
+}
+
+.socials-item:hover img {
+  opacity: 0.7;
+  /* затемнение на 30% */
+}
+
+.socials-item:hover p {
+  color: #F05536;
+  /* твой оранжевый из кнопок */
+}
 
 
 /* ======= ПАРТНЕРСКИЙ БЛОК ========================================== */
 
 .partner-section {
-  background-color:transparent;
+  background-color: transparent;
   color: #fff;
   padding: 40px 0;
   position: relative;
@@ -1825,13 +1897,8 @@ p {
   margin: 0 auto;
   padding: 0 17px;
   box-sizing: border-box;
-  border-radius: 40px;
-  background-color: #000;
-  background-image: url('pics/partnerpic.png');
-  background-repeat: no-repeat;
-  background-position:  calc(100% + 110px) calc(50% + 23px);   /* 👈 смещаем по вертикали */
-  background-size: 50%, 50%;             /* 👈 уменьшаем масштаб */
-  overflow: hidden;
+
+  background: none;
 }
 
 
@@ -1844,7 +1911,15 @@ p {
   gap: 40px;
   height: auto;
   min-height: 600px;
-  background: none;
+  border-radius: 40px;
+  background-color: #000;
+  background-image: url('pics/partnerpic.png');
+  background-repeat: no-repeat;
+  background-position: calc(132% + 110px) calc(59% + 23px);
+  /* 👈 смещаем по вертикали */
+  background-size: 70%, 100%;
+  /* 👈 уменьшаем масштаб */
+  overflow: hidden;
 }
 
 /* Верхняя часть */
@@ -1892,7 +1967,7 @@ p {
 
 /* Можно кастомно настраивать отдельно */
 #partnerpic {
-  transform: scale(1) translate(0,0);
+  transform: scale(1) translate(0, 0);
   object-position: center center;
 }
 
@@ -1906,7 +1981,7 @@ p {
   height: 76px;
   color: #fff;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 20px;
   line-height: 28px;
   letter-spacing: -1%;
@@ -1916,6 +1991,11 @@ p {
   text-decoration: none;
   position: relative;
   overflow: hidden;
+}
+
+.header-links .button-outline-gradient {
+  color: #fff;
+  font-weight: 500;
 }
 
 .button-outline-gradient::before {
@@ -1962,11 +2042,12 @@ p {
 .footer-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 17px;
+  padding: 0 57px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 40px;
+
 }
 
 .footer-top {
@@ -2033,4 +2114,97 @@ p {
   text-align: left;
   font-size: 16px;
   color: #7A7A7A;
+}
+
+.footer-col:last-child {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* === стики хэдер =================================================== */
+
+.sticky-header {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1246px;
+  height: 100px;
+  background-color: #F5F6FB;
+  border-radius: 28px;
+  box-sizing: border-box;
+  display: none;
+  z-index: 999;
+  background-color: white;
+}
+
+.sticky-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.sticky-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sticky-left img {
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.sticky-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #0E0A0B;
+}
+
+.sticky-center {
+  display: flex;
+  gap: 26px;
+}
+
+.sticky-center a {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #0E0A0B;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sticky-center a:hover {
+  color: #EC4928;
+}
+
+.sticky-right .sticky-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  padding: 0 32px;
+  background-color: #000000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.sticky-right .sticky-button:hover {
+  background-color: #EC4928;
 }
