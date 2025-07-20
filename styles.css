@@ -713,6 +713,10 @@ p {
 
 /* ======== 3_PRODUCT SECTION =========== */
 
+.product-subhead-mobile {
+  display: none;
+}
+
 .product-section {
   background-color: #F5F6FB;
   color: #0E0A0B;
@@ -2442,7 +2446,7 @@ p {
 
   .uiux-card-content {
     padding: 16px;
-        padding-left: 0px;
+    padding-left: 0px;
     margin-left: 0px;
   }
 
@@ -2516,12 +2520,12 @@ p {
 
 
   .uiux-card-image img {
-  /* увеличь масштаб, чтобы было что обрезать */
-  margin-left: -50px;
-  margin-top: 40px;
-  height: auto;
-  object-fit: cover;
-  overflow: hidden;
+    /* увеличь масштаб, чтобы было что обрезать */
+    margin-left: -50px;
+    margin-top: 40px;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
   }
 
   /* PRODUCT DESIGNER                                                                   Блок */
@@ -2591,7 +2595,339 @@ p {
 
     align-self: stretch;
   }
+}
 
 
-  
+
+@media (max-width: 699px) {
+  .header-content .intro-text {
+    margin-bottom: 60px;
+  }
+
+  .header-content .header-title {
+    margin-bottom: 20px;
+  }
+
+  .site-header .header-links a:not(.button-outline-gradient) {
+    display: none;
+  }
+
+
+}
+
+@media (min-width: 700px) and (max-width: 899px) {
+  .site-header::before {
+    width: 400px;
+    right: -120px;
+    bottom: -10px;
+    background-size: contain;
+    background-position: bottom right;
+  }
+}
+
+@media (max-width: 767px) {
+  .sticky-header {
+    display: none !important;
+  }
+}
+
+/* мобильная верстка мобильная верстка мобильная верстка мобильная верстка мобильная верстка мобильная верстка  н2 */
+
+@media (max-width: 699px) {
+
+  /* Размер зждера н2 */
+  h2,
+  .socials-header {
+    font-size: 42px !important;
+    line-height: 50px !important;
+  }
+
+  .socials-header {
+    font-size: 60px;
+  }
+
+
+  /* 🌆 Настройки фоновой картинки */
+  .site-header::before {
+    left: 83%;
+    transform: translateX(-50%);
+    right: auto;
+    bottom: 0;
+    top: 20px;
+    width: 480px;
+    background: url('pics/header_pic.png') no-repeat bottom center;
+    background-size: contain;
+  }
+
+  /* 📦 Внешний блок */
+  .site-header {
+    height: auto;
+    max-height: none;
+    padding-bottom: 40px;
+  }
+
+  /* 📦 Контейнер внутри header — с увеличенным верхним отступом */
+  .site-header .container {
+    height: auto;
+    padding-top: 220px;
+    /* ⬆️ увеличенный отступ на 200px */
+    padding-bottom: 0;
+    align-items: flex-start;
+  }
+
+  /* 📐 Контент: порядок — текст, кнопки, заголовок */
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    margin-top: -190px;
+    /* настрой значение по вкусу */
+    width: 98%;
+
+  }
+
+
+
+  /* 📝 Текст — первый */
+  .intro-text {
+    order: 0;
+  }
+
+  /* 🔘 Кнопки — второй */
+  .header-links {
+    order: 2;
+    gap: 16px;
+    margin-bottom: 0px;
+    margin-top: 12px;
+
+  }
+
+  /* 🧱 Заголовок — последний */
+  .header-title {
+    order: 1;
+    margin-bottom: 40px;
+    margin-top: 100px;
+  }
+
+  /* Контейнер с картинкой — фиксируем общую высоту */
+  .product-col-image {
+    height: 200px;
+  }
+
+  /* Картинка внутри — заполняет по высоте, ширина авто */
+  .product-col-image img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    /* сохраняем пропорции, заполняем по высоте */
+  }
+
+  /* Контейнер прокрутки соцсетей — ограничиваем по ширине родителя */
+  .socials-scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+  /* Внутренний список — убираем лишнюю ширину */
+  .socials-list {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Убираем отступы у секций */
+  .product-section,
+  .graphic-section,
+  .order-section,
+  .partner-section {
+    padding: 0 !important;
+  }
+
+  /* Убираем паддинги у контейнеров */
+  .product-container,
+  .graphic-container,
+  .order-container,
+  .partner-container {
+    padding: 0 !important;
+  }
+
+  /* Убираем margin, но сохраняем border-radius */
+  .product-card,
+  .graphic-card,
+  .order-card,
+  .partner-card {
+    margin: 0 !important;
+    border-radius: 40px !important;
+  }
+
+  /* Устанавливаем размер и межстрочное расстояние для текста в первом блоке */
+  /* Корректный селектор для параграфа в первом блоке */
+  .site-header .intro-text p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+
+
+  /* ТУТ БЛОК ПРОДУКТЫ ПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫПРОДУКТЫ */
+  /* 👉 1. Меняем порядок элементов в верхней части (сабхэдер, h2, теги, абзацы, CTA) */
+
+  /* 👁 Показываем сабхедер только на мобилке */
+  /* 👁 Сабхедер только на мобилке */
+  .product-subhead-mobile {
+    display: block;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 20px 0;
+  }
+
+  /* 🙈 Скрываем оригинальный сабхедер */
+  .product-top-right .p2 {
+    display: none;
+  }
+
+  /* 🎯 Уменьшаем отступ у заголовков картинок */
+  .product-image-title,
+  .product-image-title-bottom {
+    left: 20px;
+  }
+
+  /* 📦 Базовая обертка: компактнее и ниже */
+  .product-card {
+    min-height: 400px !important;
+    max-height: 1290px;
+    gap: 20px;
+  }
+
+  /* 🧱 Обнуляем отступы и padding */
+  .product-top,
+  .product-bottom,
+  .product-top-left,
+  .product-top-right,
+  .product-col-text {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* ✂️ Унифицированный вертикальный ритм */
+  .product-top-left h2,
+  .product-tags,
+  .product-top-right p {
+    margin-bottom: 10px !important;
+  }
+
+  .product-top-right .button-orange {
+    margin: 0px 0 0 !important;
+  }
+
+  .product-col-text p {
+    margin-bottom: 0px !important;
+  }
+
+  .product-col-text .button-orange {
+    margin-top: 20px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 🔁 Перестановка колонок: карточки выше, текст ниже */
+  .product-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 30px;
+  }
+
+  .product-col-image {
+    width: 100%;
+    height: auto !important;
+  }
+
+  .product-col-image:nth-child(2) {
+    order: 0;
+  }
+
+  .product-col-image:nth-child(3) {
+    order: 1;
+  }
+
+  .product-col-text {
+    width: 100%;
+    height: auto !important;
+    justify-content: flex-start !important;
+    order: 2;
+  }
+
+  .product-subhead-mobile {
+    margin-bottom: 0 !important;
+  }
+
+  .product-top-left h2 {
+    margin-top: 0 !important;
+  }
+
+}
+
+@media (min-width: 408px) and (max-width: 699px) {
+  .site-header::before {
+    top: 80px;
+    /* сдвигаем картинку вниз на 100px */
+  }
+}
+
+/*  БЛОК АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА  */
+
+@media (max-width: 699px) {
+  .branding-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* можно поменять на любой вертикальный ритм */
+  }
+
+  .branding-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .branding-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .branding-col {
+    width: 100%;
+  }
+
+  .branding-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .branding-tags {
+    margin: 0;
+  }
+
+  .branding-top h2,
+  .branding-top .p2,
+  .branding-content p {
+    margin: 0;
+  }
+
+  .branding-card {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .branding-section {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .branding-container {
+    height: auto !important;
+    min-height: auto !important;
+  }
 }

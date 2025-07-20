@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Серёжа Кузнецов Digital Designer / Art Director</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
@@ -51,6 +51,7 @@
   <div id="11_FOOTER"></div>
 
   <script type="module">
+
     const blocks = [
       '1_HEADER',
       '2_UIUX',
@@ -110,10 +111,16 @@
         }
       }
 
+      if (window.innerWidth <= 767) return; // 👈 отключаем для мобилок
+
       window.addEventListener('scroll', checkSticky);
       window.addEventListener('resize', checkSticky);
       checkSticky();
     });
+
+
+    //СКРИПТ ЧТОБЫ КАРТИНКИ В ОРДЕРЕ ПАДАЛИ
+
 
     //СКРИПТ ЧТОБЫ КАРТИНКИ В ОРДЕРЕ ПАДАЛИ
     document.addEventListener('DOMContentLoaded', () => {
