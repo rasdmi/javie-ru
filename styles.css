@@ -739,7 +739,7 @@ p {
   flex-direction: column;
   gap: 40px;
   height: auto;
-  min-height: 600px;
+
 
 }
 
@@ -2053,8 +2053,8 @@ p {
 
 .footer-container {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 57px;
+
+  padding: 0 0px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -2098,7 +2098,7 @@ p {
   flex-wrap: wrap;
   gap: 40px;
   justify-content: flex-end;
-  flex: 1 1 600px;
+  flex: 1 1 60px;
 }
 
 .footer-col {
@@ -2795,8 +2795,8 @@ p {
   /* 📦 Базовая обертка: компактнее и ниже */
   .product-card {
     min-height: 400px !important;
-    max-height: 1290px;
     gap: 20px;
+    height: 1345px;
   }
 
   /* 🧱 Обнуляем отступы и padding */
@@ -2865,6 +2865,9 @@ p {
     margin-top: 0 !important;
   }
 
+
+
+
 }
 
 @media (min-width: 408px) and (max-width: 699px) {
@@ -2876,58 +2879,559 @@ p {
 
 /*  БЛОК АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА АЙДЕНТИКА  */
 
+
+
 @media (max-width: 699px) {
-  .branding-card {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* можно поменять на любой вертикальный ритм */
-  }
 
+  /* ⬆️ Общие сбросы */
+  .branding-section,
+  .branding-container,
+  .branding-card,
   .branding-top {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
 
+  /* 🧱 Основной вертикальный лейаут */
+  .branding-card,
+  .branding-top,
   .branding-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
+  /* 📏 Контейнерная ширина + убиваем левые отступы */
+  .branding-top-right,
   .branding-col {
-    width: 100%;
+    width: 100% !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
   }
 
+  /* 🖼 Картинка: по ширине контейнера, с отступами */
   .branding-image {
-    width: 100%;
+    width: calc(100% - 40px);
+    margin: 0 20px;
     height: auto;
   }
 
-  .branding-tags {
-    margin: 0;
-  }
-
+  /* 🧩 Сброс отступов */
+  .branding-tags,
   .branding-top h2,
   .branding-top .p2,
   .branding-content p {
     margin: 0;
   }
 
-  .branding-card {
+  /* 🔁 Нижняя секция: вертикально */
+  .branding-content {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .branding-col {
+    flex: none !important;
+    height: auto !important;
+  }
+
+  /* Разрешаем рост по контенту */
+  .branding-section,
+  .branding-container,
+  .branding-card,
+  .branding-top {
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
   }
 
-  .branding-section {
+  /* Главная структура: вертикально с отступами */
+  .branding-card,
+  .branding-top,
+  .branding-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Ширина контейнера + убираем левые отступы */
+  .branding-top-right,
+  .branding-col {
+    width: 100% !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* Картинка: по ширине контейнера, с отступами */
+  .branding-image {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    height: auto;
+  }
+
+  /* Сброс отступов, но задаём ритм вручную */
+  .branding-tags,
+  .branding-top h2,
+  .branding-top .p2,
+  .branding-content p {
+    margin: 0;
+  }
+
+  /* Нижняя секция (branding-content) в колонку */
+  .branding-content {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .branding-col {
+    flex: none !important;
+    height: auto !important;
+  }
+
+  .uiux-section {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .branding-bottom-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px;
+  }
+
+  .branding-bottom-grid>* {
+    width: 100% !important;
+  }
+
+  .product-col-image-2 img {
+    object-fit: cover !important;
+    /* Обеспечивает обрезку по контейнеру */
+    object-position: center bottom !important;
+    /* Смещает содержимое вниз */
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 90px !important;
+    /* Визуальный отступ сверху */
+    margin-left: 20px;
+  }
+
+  /* Убедимся, что контейнер изображения не обрезает содержимое */
+  .product-col-image-2 {
+    overflow: visible !important;
+  }
+
+  .branding-top {
+    flex-direction: column !important;
+  }
+
+  .branding-top-left,
+  .branding-top-right {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .branding-image-box {
+    width: 100%;
+  }
+
+  .branding-image-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .branding-image-box img {
+    margin-top: -360px;
+    margin-left: -840px;
+    align-items: center;
+    width: 380%;
+  }
+
+  .branding-bottom-right {
+    display: none;
+  }
+
+  .branding-right-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* ➕ добавляет вертикальные отступы между всеми элементами */
+  }
+
+  /* Сброс отступов по умолчанию, если вдруг */
+  .branding-right-top h2,
+  .branding-right-top .p2,
+  .branding-tags,
+  .branding-right-top p,
+  .branding-right-top a {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Также можно уточнить поведение ссылки */
+  .branding-right-top a.button-orange {
+    display: inline-block;
+  }
+
+  .branding-bottom-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .branding-bottom-left h2,
+  .branding-bottom-left .p2,
+  .branding-bottom-left .branding-tags,
+  .branding-bottom-left p,
+  .branding-bottom-left a {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .branding-right-bottom,
+  .branding-right-content {
+    margin-top: 30px;
+  }
+
+  .branding-right-bottom .p2 {
+    display: none !important;
+  }
+
+}
+
+/* @media (min-width: 420px) and (max-width:699){
+  .branding-image-box img {
+    margin-top: -40px !important;
+    margin-left: -280px;
+    width: 20%;
+  }
+} */
+
+
+/* Блок Граф диз Блок Граф диз Блок Граф диз Блок Граф диз Блок Граф диз Блок Граф диз  */
+@media (max-width: 699px) {
+
+  /* 🔹 Весь блок */
+  .graphic-card {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    /* уменьшили вертикальный отступ верхнего блока */
+  }
+
+  /* 🔝 Верхняя часть (текст) */
+  .graphic-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .graphic-top-left .p2 {
+    margin-top: 20px;
+  }
+
+  .graphic-top-right h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .graphic-top-right .link-orange {
+    margin-top: 4px;
+  }
+
+  /* 🔁 Структура карточек */
+  .graphic-row {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0px;
+    margin-left: 0px;
+    background: none !important;
+    background-color: transparent !important;
+    padding-bottom: 40px;
+  }
+
+  .graphic-top,
+  .graphic-item-text,
+  .graphic-item {
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    background: none !important;
+    background-color: transparent !important;
+  }
+
+  .graphic-popup img {
+    transform: rotate(0deg);
+  }
+
+  /* ✅ Сдвиг содержимого внутри карточки */
+  .graphic-item-text {
+    padding-left: 0px;
+    padding-top: 8px;
+  }
+
+  /* 📛 Заголовки карточек */
+  .graphic-item-text h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    color: #0E0A0B;
+  }
+
+  /* 🏷 Стили тегов — возвращаем фирменные */
+  .graphic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .graphic-tags .tag {
+    background: #E5E7EB;
+    color: #0E0A0B;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1;
+    padding: 4px 10px;
+  }
+
+  /* ❌ Отключаем hover / pop-up */
+  .graphic-item,
+  .graphic-row,
+  .graphic-card,
+  .graphic-popup {
+    pointer-events: none;
+  }
+
+  .graphic-popup {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    width: 160px;
+    height: 160px;
+  }
+
+  /* Айдентика — нижняя картинка */
+  .branding-box-image img {
+    width: 350px !important;
+    height: 325px !important;
+    object-fit: cover;
+  }
+
+  .graphic-item-text h3 {
+    color: #fff !important;
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    line-height: 39px !important;
+    margin: 0 0 12px 0;
+    /* по желанию */
+  }
+
+  /* 1. Картинка #popup1 — сместить правее */
+  #popup1 img {
+    margin-left: -110px;
+  }
+
+  /* 2. Картинка #popup2 — сместить чуть-чуть правее */
+  #popup2 img {
+    margin-left: -12px;
+    margin-top: 10px;
+  }
+
+  /* 3. Картинка #popup3 — поднять выше */
+  #popup3 img {
+    margin-top: 0px;
+  }
+
+  /* 4. Картинка #popup4 — тоже выше */
+  #popup4 img {
+    margin-top: 16px;
+    margin-left: 10px;
+  }
+
+  /* АРТ ДИРЕКШЕН АРТ ДИРЕКШЕНАРТ ДИРЕКШЕНАРТ ДИРЕКШЕНАРТ ДИРЕКШЕНАРТ ДИРЕКШЕН */
+  /* Главная секция и контейнер */
+  .artdir-section,
+  .artdir-container,
+  .artdir-top {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
   }
 
-  .branding-container {
+  /* Колонки идут одна за другой */
+  .artdir-top-left,
+  .artdir-top-right {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+  }
+
+  /* Картинка на всю ширину */
+  .artdir-image-box img {
+    width: 100% !important;
     height: auto !important;
-    min-height: auto !important;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Сбросы внутренних отступов */
+  .artdir-right-content,
+  .artdir-right-top,
+  .artdir-right-bottom {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Сбросы у текста */
+  .artdir-right-top h2,
+  .artdir-right-top .p2,
+  .artdir-right-bottom p {
+    margin: 0 !important;
+  }
+
+  .artdir-right-bottom{
+    gap: 26px;
+  }
+
+  /* Отступы между блоками внутри правой колонки */
+  .artdir-right-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Картинка в блоке артдирекшн — как в брендинге */
+  .artdir-image-box img {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Контейнер с картинками — общее поведение */
+  .artdir-image-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 357px;
+  }
+
+  #artdir1_pic {
+    padding-top: 36px;
+  }
+
+  #artdir2_pic {
+    width: 900%;
+    margin: 0 auto;
+  }
+
+  #artdir3_pic {
+    width: 295%;
+    margin: 0 auto;
+  }
+
+  #artdir4_pic {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .artdir-right-top .p2 {
+    display: none !important;
+  }
+  /* Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы    testimonial-right testimonial-card  */
+
+.testimonial-card{
+  height: 620px;
+    padding-top: 40px;
+    padding-left: 30px;
+}
+
+.testimonial-container{
+  padding: 0px 0px;
+}
+
+.testimonial-title{
+  padding-left: 20px;
+  margin-bottom: -10px;
+}
+
+
+  /* футер футер футер футер футер футер футер футер футер футер  */
+  .site-footer {
+    padding: 40px 20px;
+  }
+
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* убираем отступ между .footer-left и .footer-right */
+  }
+
+  .footer-left {
+    width: 100%;
+    margin-bottom: 0; /* доп. защита от внешних отступов */
+  }
+
+  .footer-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: flex-start;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .footer-col a {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  .footer-bottom {
+    margin-top: 32px;
+    text-align: left;
+  }
+
+  .footer-col:last-child {
+    display: none;
+  }  
+
+  .footer-bottom{
+    margin-top: 8px;
+  }
+
+  .footer-left {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width:370px) {
+
+  .branding-image-box img {
+    width: 180%;
+    margin-left: -100px;
+    margin-top: -50px;
   }
 }
