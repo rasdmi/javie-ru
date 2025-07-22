@@ -2053,8 +2053,8 @@ p {
 
 .footer-container {
   max-width: 1280px;
-
-  padding: 0 0px;
+  margin: 0 auto;
+  padding: 0 57px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -2098,7 +2098,7 @@ p {
   flex-wrap: wrap;
   gap: 40px;
   justify-content: flex-end;
-  flex: 1 1 60px;
+  flex: 1 1 600px;
 }
 
 .footer-col {
