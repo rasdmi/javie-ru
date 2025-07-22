@@ -3382,90 +3382,41 @@ p {
     padding: 40px 20px;
   }
 
+  .footer-container {
+    width: 100%;
+  }
+
   .footer-top {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0px !important;
-    width: 100% !important;
+    flex-direction: column;
+    gap: 32px;
   }
 
   .footer-left {
-    margin-bottom: 8px;
-    width: 100% !important;
-    margin-bottom: 0;
-    /* доп. защита от внешних отступов */
+    width: 100%;
   }
 
   .footer-right {
-    width: 100% !important;
-    gap: 50px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 24px !important;
-    align-items: flex-start !important;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
   }
 
   .footer-col {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    align-items: flex-start !important;
   }
 
   .footer-col a {
     display: block;
-    width: 100% !important;
-    text-align: left !important;
+    width: 100%;
+    text-align: left;
   }
 
   .footer-bottom {
     margin-top: 32px;
-    text-align: left !important;
-  }
-
-  .footer-col:last-child {
-    display: none;
-  }
-
-  .footer-bottom {
-    margin-top: 8px;
-  }
-
-}
-
-@media (max-width:370px) {
-
-  .branding-image-box img {
-    width: 180%;
-    margin-left: -100px;
-    margin-top: -50px;
-  }
-}
-
-@media screen and (max-width: 699px) {
-  .footer-top {
-    flex-direction: column !important;
-  }
-
-  .footer-right {
-    flex-direction: column !important;
-    display: flex !important;
-    gap: 24px;
-    align-items: flex-start !important;
-    width: 100% !important;
-  }
-
-  .footer-col {
-    width: 100% !important;
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-
-  .footer-col a {
-    width: 100%;
-    display: block;
-    text-align: left !important;
+    text-align: left;
+    font-size: 14px;
   }
 }
