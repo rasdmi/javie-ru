@@ -3366,8 +3366,14 @@ p {
   }
 
   .testimonial-title {
-    padding-left: 20px;
+    padding-left: 17px;
     margin-bottom: -10px;
+  }
+
+  .testimonial-card {
+    background:none;
+    padding-left: 17px;
+    height: 570px;
   }
 
 
@@ -3435,5 +3441,31 @@ p {
     width: 180%;
     margin-left: -100px;
     margin-top: -50px;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .footer-top {
+    flex-direction: column !important;
+  }
+
+  .footer-right {
+    flex-direction: column !important;
+    display: flex !important;
+    gap: 24px;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  .footer-col {
+    width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .footer-col a {
+    width: 100%;
+    display: block;
+    text-align: left !important;
   }
 }
