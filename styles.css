@@ -3310,7 +3310,7 @@ p {
   .artdir-right-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
   }
 
   /* Картинка в блоке артдирекшн — как в брендинге */
@@ -3355,11 +3355,7 @@ p {
 
   /* Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы    testimonial-right testimonial-card  */
 
-  .testimonial-card {
-    height: 620px;
-    padding-top: 40px;
-    padding-left: 30px;
-  }
+
 
   .testimonial-container {
     padding: 0px 0px;
@@ -3371,19 +3367,42 @@ p {
   }
 
   .testimonial-card {
-    background:none;
+    background: none;
+    padding-top: 0px;
+    padding-left: 30px;
     padding-left: 17px;
-    height: 570px;
+    height: auto;
   }
+
+  /* Блок Партнеры                 Партнеры */
+
+  .partner-card {
+    padding-left: 17px;
+  }
+
+  .testimonial-content {
+    flex-direction: column-reverse;
+  }
+
+  .testimonial-card-bottom {
+    margin-top: 32px;
+  }
+
+
+
+
 
 
   /* футер футер футер футер футер футер футер футер футер футер  */
   .site-footer {
     padding: 40px 20px;
+    width: auto;
   }
 
   .footer-container {
     width: 100%;
+    padding-left: 0%;
+    padding-right: 0%;
   }
 
   .footer-top {
@@ -3399,6 +3418,7 @@ p {
     flex-direction: column;
     width: 100%;
     gap: 32px;
+    flex: auto;
   }
 
   .footer-col {
@@ -3418,5 +3438,21 @@ p {
     margin-top: 32px;
     text-align: left;
     font-size: 14px;
+  }
+
+  .socials-header{
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+  }
+
+  .socials-header-container{
+    margin-top: 40px;
+  }
+}
+
+@media (max-width:370px) {
+.partner-section .button-outline-gradient {
+    font-size: 16px !important;
+    line-height: 16px !important;
   }
 }
