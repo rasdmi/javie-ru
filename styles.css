@@ -2886,6 +2886,10 @@ p {
 
 @media (max-width: 699px) {
 
+.branding-top {
+  margin-top: 0px;
+}
+
   /* ⬆️ Общие сбросы */
   .branding-section,
   .branding-container,
@@ -3273,6 +3277,13 @@ p {
     overflow: visible !important;
   }
 
+  .artdir-image-box {
+  margin-top: 0px;
+    background-color: #202020;
+}
+
+
+
   /* Колонки идут одна за другой */
   .artdir-top-left,
   .artdir-top-right {
@@ -3545,7 +3556,7 @@ p {
   .footer-right {
     flex-direction: column;
     width: 100%;
-    gap: 32px;
+    gap: 46px;
     flex: auto;
   }
 
