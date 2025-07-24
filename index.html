@@ -173,31 +173,11 @@
       });
     }
 
-
-  </script>
-
-
-  <script>
     //СКРИПТ крутящиеся картинки в соушелс
-
-    const scrollWrapper = document.querySelector('.socials-scroll-wrapper');
-    let scrollInterval;
-
-    function startScrolling() {
-      scrollInterval = setInterval(() => {
-        if (!scrollWrapper) return;
-        scrollWrapper.scrollLeft += 1;
-
-        // Зацикливание
-        if (scrollWrapper.scrollLeft >= scrollWrapper.scrollWidth - scrollWrapper.clientWidth) {
-          scrollWrapper.scrollLeft = 0;
-        }
-      }, 20); // скорость
-    }
-
-    startScrolling();
+    
   </script>
 
+  
 </body>
 
 </html>

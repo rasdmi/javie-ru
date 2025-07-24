@@ -2656,7 +2656,7 @@ p {
     transform: translateX(-50%);
     right: auto;
     bottom: 0;
-    top: 20px;
+    top: 40px;
     width: 470px;
     background: url('pics/header_pic.png') no-repeat bottom center;
     background-size: contain;
