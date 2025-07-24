@@ -2501,6 +2501,7 @@ p {
     display: none;
   }
 
+
   .button-orange.cta-mobile {
     display: inline-flex;
     margin-top: 20px;
@@ -2510,6 +2511,8 @@ p {
     justify-content: center;
     margin-left: 0;
     margin-top: 30px;
+    font-weight: 500;
+    font-size: 18px;
   }
 
   .uiux-card-image {
@@ -2649,12 +2652,12 @@ p {
 
   /* 🌆 Настройки фоновой картинки */
   .site-header::before {
-    left: 83%;
+    left: 86%;
     transform: translateX(-50%);
     right: auto;
     bottom: 0;
     top: 20px;
-    width: 480px;
+    width: 470px;
     background: url('pics/header_pic.png') no-repeat bottom center;
     background-size: contain;
   }
@@ -3353,6 +3356,8 @@ p {
     display: none !important;
   }
 
+  
+
   /* Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы Блок Отзывы    testimonial-right testimonial-card  */
 
 
@@ -3369,9 +3374,10 @@ p {
   .testimonial-card {
     background: none;
     padding-top: 0px;
-    padding-left: 30px;
     padding-left: 17px;
+    padding-right: 5%;
     height: auto;
+    width: 100%;
   }
 
   /* Блок Партнеры                 Партнеры */
@@ -3388,7 +3394,129 @@ p {
     margin-top: 32px;
   }
 
+  .testimonial-image-box {
+    height: 260px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
 
+  .testimonial-image-box img {
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  /* ордер ордер ордер ордер ордер ордер ордер ордер ордер ордер   */
+  .order-card {
+    background: none !important;
+    border-radius: 0 !important;
+    height: 700px;
+
+  }
+
+  .order-bg-img {
+    width: 320px;
+    opacity: 0.7;
+    object-fit: contain;
+  }
+
+  #order1_pic {
+    top: 20px;
+    left: -180px;
+    transform: scale(1) rotate(-225deg);
+    /* дан   */
+  }
+
+  #order2_pic {
+    bottom: 0px;
+    right: -140px;
+    transform: scale(1) rotate(-55deg);
+    /* дан  2 */
+  }
+
+  .order-bottom-link {
+    bottom: 180px;
+    /* ⬆️ поднимаем выше */
+  }
+
+
+  .partner-top {
+    margin-top: 0px;
+  }
+
+  /* соцсети соцсети соцсети соцсети соцсети соцсети соцсети соцсети   */
+  .socials-list {
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .socials-item img {
+    /* вместо 300–400px */
+    object-fit: cover;
+    width: 120px;
+    height: 120px !important;
+    display: block;
+
+    object-fit: cover;
+    /* ✨ важное: обрезает и заполняет */
+    object-position: center;
+    /* ⬅️ центрируем по горизонтали и вертикали */
+  }
+
+
+  .socials-item:nth-child(1) img {
+    object-position: right top;
+    object-fit: cover;
+    height: 900px;
+  }
+
+  .socials-item:nth-child(3) img {
+    margin-top: 0px !important;
+  }
+
+  .socials-item {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .socials-item:nth-child(1),
+  .socials-item:nth-child(4),
+  .socials-item:nth-child(5) {
+    margin-top: 56px;
+  }
+
+  .socials-item:nth-child(1),
+  .socials-item:nth-child(4),
+  .socials-item:nth-child(5) {
+    margin-top: 0 !important;
+  }
+
+  /* партнерка партнеркапартнеркапартнеркапартнеркапартнерка */
+
+  .partner-top {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-top: 240px;
+  }
+
+  .partner-top-left .button-outline-gradient {
+    margin-top: 10px !important;
+  }
+
+  .partner-top-left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .partner-card {
+    background-position: right -70px top -307px;
+    background-size: 120%;
+  }
+
+  .partner-top-left * {
+    width: 100%;
+  }
 
 
 
@@ -3440,19 +3568,26 @@ p {
     font-size: 14px;
   }
 
-  .socials-header{
+  .socials-header {
     padding-bottom: 0%;
     margin-bottom: 0%;
   }
 
-  .socials-header-container{
+  .socials-header-container {
     margin-top: 40px;
   }
 }
 
 @media (max-width:370px) {
-.partner-section .button-outline-gradient {
+  .partner-section .button-outline-gradient {
     font-size: 16px !important;
     line-height: 16px !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .button-orange {
+    font-weight: 500 !important;
+    font-size: 18px !important;
   }
 }
