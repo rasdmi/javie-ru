@@ -700,10 +700,8 @@ p {
 
 
 .uiux-card-image img {
-  width: 200%;
-  margin-top: 60px;
   /* увеличь масштаб, чтобы было что обрезать */
-  margin-left: -300px;
+  margin-left: 0px;
   height: auto;
   object-fit: cover;
   overflow: hidden;
