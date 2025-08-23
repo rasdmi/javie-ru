@@ -23,7 +23,7 @@ html {
   width: 550px;
   /* 👈 размер изображения */
   height: 100%;
-  background: url('pics/header_pic.gif') no-repeat bottom right;
+  background: url('header_pic.gif') no-repeat bottom right;
   background-size: contain;
   opacity: 0.8;
   /* 👈 прозрачность */
@@ -135,7 +135,7 @@ footer {
   right: -20px;
   width: 550px;
   height: 100%;
-  background: url('pics/header_pic.gif') no-repeat bottom right;
+  background: url('header_pic.gif') no-repeat bottom right;
   background-size: contain;
   opacity: 0.8;
   pointer-events: none;
@@ -2658,7 +2658,7 @@ p {
     bottom: 0;
     top: 40px;
     width: 450px;
-    background: url('pics/header_pic.gif') no-repeat bottom center;
+    background: url('header_pic.gif') no-repeat bottom center;
     background-size: contain;
   }
 
