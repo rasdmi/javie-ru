@@ -843,9 +843,9 @@ p {
 .product-col-image-2 img {
   width: 120%;
   /* 👉 настраивай размер для второй колонки */
-  margin-left: 40px;
+  margin-left: -55px;
   /* 👉 настраивай сдвиг отдельно */
-  margin-top: 92px;
+  margin-top: -9px;
 }
 
 .product-col-image-3 img {
