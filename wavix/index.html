@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Layered Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background: #0D1318;
+      /* обновлённый фон */
+      overflow-x: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* ===== 1) Нижний z-слой: два крутяшихся circle.png ===== */
+
+    .background-circles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .circle {
+      position: absolute;
+      left: 50%;
+      top: -160px;
+      /* Центровка по горизонтали и смещение по вертикали на -600px */
+      transform: translate(-50%, -200px);
+      transform-origin: center center;
+      will-change: transform;
+      mix-blend-mode: lighten;
+    }
+
+    .circle--cw {
+      /* при желании можно изменить размер */
+    }
+
+    .circle--ccw {
+      /* при желании можно изменить размер */
+    }
+
+    /* ===== 2) Верхний слой с navbar, center, bottom ===== */
+
+    .ui-layer {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      pointer-events: none;
+    }
+
+    .nav-bar {
+      position: fixed;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: auto;
+    }
+
+    .center-block {
+      position: absolute;
+      top: 260px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: auto;
+    }
+
+    .bottom-block {
+      position: fixed;
+      bottom: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: auto;
+    }
+
+    /* ===== 3) Самый верхний слой: widget1 в правом нижнем углу ===== */
+
+    .widget {
+      position: fixed;
+      right: 40px;
+      bottom: 50px;
+      z-index: 3;
+      pointer-events: auto;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1) Нижний z-слой: два блока с circle.png -->
+  <div class="background-circles">
+    <img src="circle.png" alt="circle clockwise" class="circle circle--cw" />
+    <img src="circle.png" alt="circle counterclockwise" class="circle circle--ccw" />
+  </div>
+
+  <!-- 2) Верхний слой с navbar, center, bottom -->
+  <div class="ui-layer">
+    <img src="navbar.png" alt="navbar" class="nav-bar" />
+    <img src="center.png" alt="center" class="center-block" />
+    <img src="bottom.png" alt="bottom" class="bottom-block" />
+  </div>
+
+  <!-- 3) Самый верхний z-индекс: виджет в правом нижнем углу -->
+  <img src="widget1.png" alt="widget" class="widget" />
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const circleCW = document.querySelector(".circle--cw");
+  const circleCCW = document.querySelector(".circle--ccw");
+
+  // базовое ускорение (фазы)
+  const baseAcceleration = 0.00004;
+
+  // мышь усилена ×2
+  const mouseAccelerationFactor = 0.0002 * 2;
+
+  // пороги скорости
+  const CW_MIN_SPEED = 0.005;
+  const CW_MAX_SPEED = 0.01;
+
+  const CCW_MIN_SPEED = 0.005;
+  const CCW_MAX_SPEED = 0.03;
+
+  let angleCW = 0;
+  let angleCCW = 0;
+
+  let velocityCW = 0;
+  let velocityCCW = 0;
+
+  let lastTime = null;
+  let elapsed = 0;
+
+  // данные мыши
+  let lastMouseX = null;
+  let lastMouseY = null;
+  let lastMouseTime = 0;
+  let mouseBoost = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    const now = performance.now();
+
+    if (lastMouseX !== null && lastMouseY !== null) {
+      const dx = e.clientX - lastMouseX;
+      const dy = e.clientY - lastMouseY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      mouseBoost = Math.min(1, dist / 50);
+      lastMouseTime = now;
+    }
+
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+
+  // random boosts
+  let randomBoostCW = 0;
+  let randomBoostCCW = 0;
+
+  let lastBoostCW = 0;
+  let lastBoostCCW = -1500; // задержка 1.5 сек
+
+  function animate(timestamp) {
+
+    if (lastTime === null) {
+      lastTime = timestamp;
+      lastBoostCW = timestamp;
+      lastBoostCCW = timestamp - 1500;
+    }
+
+    const delta = timestamp - lastTime;
+    lastTime = timestamp;
+    elapsed += delta;
+
+    // затухание эффекта мыши (~300 мс)
+    if (timestamp - lastMouseTime > 300) {
+      mouseBoost = 0;
+    }
+
+    // --- random boost каждые 3 сек ---
+    if (timestamp - lastBoostCW > 3000) {
+      lastBoostCW = timestamp;
+      randomBoostCW = (Math.random() - 0.5) * 0.00015;
+    }
+
+    if (timestamp - lastBoostCCW > 3000) {
+      lastBoostCCW = timestamp;
+      randomBoostCCW = (Math.random() - 0.5) * 0.00015;
+    }
+
+    // --- фаза ускорение/замедление ---
+    const cycleDuration = 6000;
+    const phase = elapsed % cycleDuration;
+    const phaseSign = phase < 3000 ? 1 : -1;
+
+    const phaseAcceleration = baseAcceleration * phaseSign;
+
+    // --- итоговые ускорения ---
+    const accelCW =
+      phaseAcceleration +
+      mouseBoost * mouseAccelerationFactor +
+      randomBoostCW;
+
+    const accelCCW =
+      phaseAcceleration -
+      mouseBoost * mouseAccelerationFactor -
+      randomBoostCCW;
+
+    // --- обновляем скорости ---
+    velocityCW += accelCW * delta;
+    velocityCCW += accelCCW * delta;
+
+    // --- пороги ---
+    velocityCW = Math.max(CW_MIN_SPEED, Math.min(CW_MAX_SPEED, velocityCW));
+    velocityCCW = Math.max(CCW_MIN_SPEED, Math.min(CCW_MAX_SPEED, velocityCCW));
+
+    // --- углы ---
+    angleCW += velocityCW * delta;
+    angleCCW -= velocityCCW * delta;
+
+    angleCW %= 360;
+    angleCCW %= 360;
+
+    // --- применяем ---
+    circleCW.style.transform =
+      `translate(-50%, -600px) rotate(${angleCW}deg)`;
+
+    circleCCW.style.transform =
+      `translate(-50%, -600px) rotate(${angleCCW}deg)`;
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+});
+</script>
+
+</body>
+
+</html>
