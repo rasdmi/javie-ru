@@ -1750,6 +1750,7 @@ p {
   margin: 0 auto;
   padding: 0 17px;
   text-align: center;
+  margin-top: 80px;
 }
 
 .socials-subtitle {
@@ -1777,6 +1778,8 @@ p {
   overflow-x: auto;
   display: flex;
   justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 40px;
 }
 
 .socials-scroll-wrapper::-webkit-scrollbar {
