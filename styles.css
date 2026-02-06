@@ -1718,6 +1718,10 @@ p {
   width: 100%;
   text-align: center;
   z-index: 1;
+  display: flex;
+  justify-content: center; /* центр по горизонтали */
+  gap: 24px;  
+  
 }
 
 .order-bottom-link .link-default {
