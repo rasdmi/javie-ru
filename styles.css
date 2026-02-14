@@ -3585,3 +3585,155 @@ p {
     font-size: 18px !important;
   }
 }
+
+/* ===== 404 PAGE HERO ===== */
+
+.err{
+  position: relative;
+  min-height: 80vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 64px 24px 40px;
+  /*background: #EAEAF4;  твой фон */
+  overflow: hidden;
+  color: #111; /* чёрный текст */
+}
+
+.err__big{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: clamp(220px, 40vw, 680px);
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,.6); /* бледная большая 404 */
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.err__img{
+  width: min(560px, 78vw);
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.err__text{
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+}
+
+.err__title{
+  margin: 0 0 10px;
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-weight: 500;
+  color: rgba(17,17,17,.7);
+}
+
+.err__link{
+  display: inline-block;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(17,17,17,.4);
+  padding-bottom: 2px;
+}
+.err__link:hover{
+  opacity: .7;
+}
+
+/* ===== 404 top header (always visible) ===== */
+/* ===== 404 top header (always visible) — same style as main header-nav ===== */
+
+.header-404{
+  background: transparent;
+}
+
+/* навбар как в основном хедере: ширина/паддинги/флекс */
+.header-404 .header-nav{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 20px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* левый/правый блоки как в твоём стиле */
+.header-404 .header-nav .nav-left{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-404 .header-nav .nav-right{
+  display: flex;
+  gap: 12px;
+}
+
+/* ссылки как в твоём стиле (размер/ритм), но чёрные */
+.header-404 .header-nav a,
+.header-404 .header-nav .logo{
+  color: #0E0A0B;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* убрать лишний маржин у последнего */
+.header-404 .header-nav .nav-left a:last-child{
+  margin-right: 0;
+}
+
+.header-404 .header-nav .nav-left .logo{
+  margin-right: 29px;
+}
+
+/* лого чуть акцентнее */
+.header-404 .header-nav .logo{
+  font-weight: 500;
+}
+
+/* ховер как у тебя (можешь убрать если не надо) */
+.header-404 .header-nav a:hover{
+  color: #47B5FF;
+}
+.header-404 .header-nav a:active{
+  color: #2196E4;
+}
+
+.err__media{
+  position: relative;
+  z-index: 1;
+  width: min(560px, 78vw);
+}
+
+.err__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Градиент ПОВЕРХ картинки, сверху вниз до плотного цвета */
+.err__media::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(245,246,251,0) 0%,     /* полностью прозрачно почти везде */
+    rgba(245,246,251,0) 40%,    /* до 80% — всё ещё прозрачно */
+    rgba(245,246,251,1) 90%    /* к низу — в цвет страницы */
+  );
+}
