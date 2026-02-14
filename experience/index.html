@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сергей Кузнецов, UI/UX дизайнер</title>
+
+  <!-- ✅ Подключаем шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;200;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === ОБЩИЕ СТИЛИ === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #ffffff;
+      padding: 0;
+      color: #252525;
+      font-size: calc(28px + 0.5vw);
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+      font-weight: 400;
+    }
+
+    .text-small-black {
+      color: #252525;
+      font-size: calc(24px + 0.5vw);
+      /* На 4 пункта меньше чем основной (28px + 0.5vw) */
+      font-weight: 400;
+    }
+
+    .text-small-gray {
+      color: #B0B0B0;
+      font-size: calc(18px + 0.5vw);
+      font-weight: 400;
+    }
+
+    .text-gray {
+      color: #B0B0B0;
+      font-weight: 400;
+    }
+
+    .magic-word {
+      color: #2a55ff;
+      /* яркий фиолетово-синий */
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+
+    a {
+      color: #B0B0B0;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+      /* Нижняя граница убрана */
+    }
+
+    /* Левая часть хедера – по умолчанию отображается текст */
+    .header-left {
+      white-space: nowrap;
+      z-index: 101;
+    }
+
+    /* Правая часть хедера – навигационные ссылки */
+    .header-right {
+      display: flex;
+      gap: 44px;
+      justify-content: flex-end;
+      flex-grow: 1;
+      position: relative;
+      z-index: 102;
+    }
+
+    /* Контейнер для табов, появляющихся в хедере при прокрутке */
+    .header-tabs {
+      display: none;
+      position: absolute;
+      left: 40px;
+      top: 0;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      gap: 44px;
+      z-index: 103;
+    }
+
+    .header-tabs span {
+      cursor: pointer;
+      font-weight: 400;
+      color: #B0B0B0;
+    }
+
+    .header-tabs span.active {
+      color: #252525;
+    }
+
+    main {
+      padding: 40px;
+    }
+
+    section {
+      margin-bottom: 160px;
+    }
+
+    #general-text {
+      max-width: 75vw;
+    }
+
+    /* --- Секция Навыков (секция 2) --- */
+    #skillset {
+      font-size: 90%;
+      /* Уменьшаем шрифт на 10% */
+    }
+
+    #skills-grid,
+    #folio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .skill-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-weight: 400;
+      color: #252525;
+    }
+
+    /* Уменьшенные иконки в секции Навыков */
+    .skill-block img {
+      width: 80px;
+      /* 120px * 0.8 */
+      height: 80px;
+      /* 120px * 0.8 */
+      margin-bottom: 28px;
+      /* 16px * 0.8 */
+    }
+
+    .skill-block h3 {
+      margin-bottom: 8px;
+      font-weight: 400;
+      color: #252525;
+    }
+
+    .skill-block p {
+      color: #B0B0B0;
+      font-weight: 400;
+    }
+
+    .floating-image {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      pointer-events: none;
+      opacity: 1;
+      z-index: 200;
+    }
+
+    /* булет лист */
+    .custom-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 24px;
+    }
+
+    .custom-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+    }
+
+    .custom-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #252525;
+      font-size: 1.2em;
+      line-height: 1;
+    }
+
+
+
+    /* Навигация портфолио – выравнивание по левому краю */
+    .tabs {
+      display: flex;
+      justify-content: flex-start;
+      gap: 44px;
+      margin: 80px 0;
+    }
+
+    .tabs span {
+      cursor: pointer;
+      font-weight: 400;
+      color: #B0B0B0;
+    }
+
+    .tabs span.active {
+      color: #252525;
+    }
+
+    /* Обертка для карточки работы */
+    .folio-item {
+      position: relative;
+      width: 100%;
+    }
+
+    .folio-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .folio-caption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-weight: 400;
+      font-size: 80%;
+      /* уменьшение на 20% */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .experience-right {
+      flex: 3;
+      margin-left: -24px;
+    }
+
+    .folio-item:hover .folio-caption {
+      opacity: 1;
+    }
+
+    /* --- Медиа-запрос для уменьшения текста в хедере при ширине окна меньше 1900px --- */
+    @media (max-width: 1380px) {
+      header {
+        font-size: 0.8em;
+      }
+    }
+
+    @media (max-width: 1140px) {
+      header {
+        font-size: 0.7em;
+      }
+    }
+
+    @media (max-width: 980px) {
+      header {
+        font-size: 0.6em;
+
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: calc(20px + 0.5vw);
+        padding: 20px;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      section {
+        margin-bottom: 160px;
+      }
+
+      #skills-grid,
+      #folio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .experience-block div:first-child,
+      .experience-right {
+        font-size: 1em !important;
+        /* такой же, как у дескрипшена */
+      }
+
+      .experience-block {
+        flex-direction: column !important;
+        gap: 20px !important;
+      }
+
+      .tabs {
+
+        gap: 20px;
+        margin: 40px 0;
+      }
+
+
+      header {
+        position: static !important;
+        padding: 0 20px;
+        height: 64px;
+        font-size: 0.6em;
+      }
+
+      .header-right {
+        display: none !important;
+
+        gap: clamp(16px, 4vw, 64px);
+        justify-content: flex-end;
+        flex-grow: 1;
+        position: relative;
+        z-index: 102;
+      }
+
+      .header-left {
+        font-size: 1.8em !important;
+        /* В 2 раза больше, чем обычно */
+      }
+
+      .floating-image {
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+
+
+    @media (max-width: 480px) {
+      body {
+        font-size: calc(16px + 0.5vw);
+        padding: 16px;
+      }
+
+      main {
+        padding: 16px;
+      }
+
+      section {
+        margin-bottom: 140px;
+      }
+
+      #skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #folio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .header-right {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .header-left {
+        font-size: 0.9em;
+      }
+
+      .tabs {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .floating-image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+  <header>
+    <div class="header-left">Серёжа Кузнецов, UI/UX дизайнер</div>
+    <!-- Контейнер для динамических табов, появляющихся в хедере при прокрутке -->
+    <div class="header-right">
+      <a href="#section-3">Портфолио</a>
+      <a href="#skillset">Навыки</a>
+      <a href="#experience">Опыт</a>
+      <a href="../text/resume.pdf" download>Резюме</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="general">
+      <img id="general-photo" src="" alt="me"
+        style="width: 180px; height: 180px; object-fit: cover; display: block; margin: 100px 0 40px 0;">
+      <div id="general-text" style="margin-top: 80px;">Загрузка информации...</div>
+    </section>
+
+
+
+
+
+    <section id="section-3">
+      <!-- Маркер для определения видимости секции портфолио -->
+      <div id="portfolio-marker" style="height:1px;"></div>
+      <div class="tabs">
+        <span class="tab active" data-type="i">Интерфейсы</span>
+        <span class="tab" data-type="b">Айдентика</span>
+        <span class="tab" data-type="g">Графика</span>
+      </div>
+      <div id="folio-grid"></div>
+    </section>
+
+    <section id="skillset">
+      <div id="skills-grid"></div>
+    </section>
+
+    <section id="section-4"></section>
+    <section id="section-5"></section>
+
+    <section id="experience">
+      <div style="margin-top: 100px; margin-bottom: 40px;">Опыт работы</div>
+      <hr style="border: none; border-top: 1px solid #B0B0B0; margin-bottom: 60px;">
+      <div id="experience-container"></div>
+    </section>
+
+    <section id="contacts">
+      <hr style="border: none; border-top: 1px solid #B0B0B0; margin-bottom: 60px;">
+      <div id="contact-container"></div>
+    </section>
+
+    <footer style="display: flex; justify-content: space-between; margin-top: 120px; padding: 0px;">
+      <div style="display: flex; gap: 36px;">
+        <a href="https://www.linkedin.com/in/javiejacie" style="text-decoration: none;">Linkedin</a>
+        <a href="https://www.instagram.com/sklator" style="text-decoration: none;">Instagram</a>
+      </div>
+      <div>Javie.ru © 2025</div>
+    </footer>
+
+    <script>
+      // --- Подгрузка опыта работы ---
+      fetch('../text/experience.txt')
+        .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить опыт работы'))
+        .then(text => {
+          const blocks = text.split('\\').map(b => b.trim()).filter(Boolean);
+          const container = document.getElementById('experience-container');
+
+          for (let i = 0; i < blocks.length; i += 4) {
+            const year = blocks[i] || '';
+            const company = blocks[i + 1] || '';
+            const position = blocks[i + 2] || '';
+            let description = blocks[i + 3] || '';
+
+            // Заменяем {текст=картинка} или {текст} на span
+            description = description.replace(/\{([^}=]+)(=([^,}]+))?(,\s*([^}]+))?\}/g,
+              (_, word, _eq, img, _comma, link) => {
+                const filename = (img || word).trim();
+                const url = link ? link.trim() : null;
+                const content = `<span class="magic-word" data-img="${filename}">${word.trim()}</span>`;
+                return url
+                  ? `<a href="${url}" target="_blank" style="text-decoration: none;">${content}</a>`
+                  : content;
+              });
+
+
+
+            if (description.includes('→')) {
+              // Делим на основной текст и всё после первого →
+              const firstArrowIndex = description.indexOf('→');
+              const mainText = description.slice(0, firstArrowIndex).trim();
+              const bulletText = description.slice(firstArrowIndex);
+
+              const items = bulletText
+                .split('→')
+                .map(str => str.trim())
+                .filter(Boolean)
+                .map(item => `<li>${item}</li>`)
+                .join('');
+
+              description = `${mainText}<br><ul class="custom-list">${items}</ul>`;
+            }
+
+
+            const rightHTML = `
+        <div class="text-small-gray" style="font-weight: 400; color: #252525;font-size: 0.8em;">${company}</div>
+        <div class="text-small-gray" style="margin-top: 0px;">${position}</div>
+        <div class="text-small-gray" style="color: #252525; max-width: 90%; margin-top: 32px;">${description}</div>
+      `;
+
+            const block = document.createElement('div');
+            block.className = "experience-block";
+            block.style = "display: flex; gap: 40px; margin-bottom: 80px; font-weight: 400; color: #252525;";
+            //тут сетку ломает
+            block.innerHTML = `<div style="flex: 1; color: #252525; font-weight: 400; font-size: 0.8em;">${year}</div><div style="flex: 3;">${rightHTML}</div>`;
+            container.appendChild(block);
+          }
+        })
+        .catch(err => {
+          document.getElementById('experience-container').textContent = 'Ошибка: ' + err;
+        });
+
+
+      // --- Подгрузка контактов ---
+      fetch('../text/contact.txt')
+        .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить контакты'))
+        .then(text => {
+          const container = document.getElementById('contact-container');
+
+          // Оборачиваем ключевые слова ссылками
+          const linkedText = text
+            .replace(/(тг|телеграм)/gi, '<a href="https://t.me/javiejacie" style="color: #B0B0B0; text-decoration: none;">$1</a>')
+            .replace(/(имейл|email|мейл)/gi, '<a href="mailto:psjavie@gmail.com" style="color: #B0B0B0; text-decoration: none;">$1</a>');
+
+          // Разбиваем на строки и выводим каждую
+          linkedText.split('\n').forEach(line => {
+            const div = document.createElement('div');
+            div.innerHTML = line.trim();
+            container.appendChild(div);
+          });
+        })
+        .catch(err => {
+          document.getElementById('contact-container').textContent = 'Ошибка: ' + err;
+        });
+
+      // Подгружаем все картинки для интерфейсов, айдентики и графики сразу
+      ['i', 'b', 'g'].forEach(type => {
+        const count = type === 'b' ? 8 : 20;
+        for (let i = 1; i <= count; i++) {
+          const img = new Image();
+          img.src = `../pics/folio/p_${type}_${i}.png`;
+        }
+      });
+
+
+      // всплывающие фотки в опыте работы
+      document.body.addEventListener('mouseover', (e) => {
+        if (e.target.classList.contains('magic-word')) {
+          const img = new Image();
+          img.src = `../exp/${e.target.dataset.img}.png`;
+          img.className = 'magic-popup';
+          img.style.position = 'absolute';
+          img.style.pointerEvents = 'none';
+          img.style.zIndex = 999;
+          img.style.imageRendering = 'auto';
+
+          // дожидаемся загрузки картинки
+          img.onload = () => {
+            const realW = img.naturalWidth;
+            const realH = img.naturalHeight;
+
+            img.style.width = (realW / 2) + 'px';
+            img.style.height = (realH / 2) + 'px';
+
+            document.body.appendChild(img);
+          };
+
+          function moveListener(ev) {
+            if (img.complete) {
+              img.style.left = `${ev.pageX + 20}px`;
+              img.style.top = `${ev.pageY + 20}px`;
+            }
+          }
+
+          moveListener(e);
+          document.addEventListener('mousemove', moveListener);
+
+          e.target.addEventListener('mouseleave', () => {
+            img.remove();
+            document.removeEventListener('mousemove', moveListener);
+          }, { once: true });
+        }
+      });
+
+      //КОД для тач девайсов чтобы ссылка сразу не прожималась
+      let currentActiveMagic = null;
+
+      const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+
+      if (isTouchDevice) {
+        document.body.addEventListener('click', (e) => {
+          const target = e.target.closest('.magic-word');
+
+          // Клик по магическому слову
+          if (target) {
+            const link = target.closest('a');
+
+            // Если уже активен — переходим по ссылке
+            if (currentActiveMagic === target) {
+              if (link && link.href) {
+                window.open(link.href, '_blank');
+              }
+              return;
+            }
+
+            // Иначе: показываем картинку + подчёркивание
+            e.preventDefault(); // отменяем переход по ссылке
+            e.stopPropagation();
+
+            // Убираем предыдущее
+            if (currentActiveMagic && currentActiveMagic !== target) {
+              currentActiveMagic.classList.remove('active-magic');
+              removeMagicImage();
+            }
+
+            currentActiveMagic = target;
+            target.classList.add('active-magic');
+            showMagicImage(target);
+          }
+
+          // Клик вне магического слова — сбрасываем
+          else if (currentActiveMagic) {
+            currentActiveMagic.classList.remove('active-magic');
+            removeMagicImage();
+            currentActiveMagic = null;
+          }
+        });
+      }
+
+      // Стиль подчёркивания
+      const style = document.createElement('style');
+      style.textContent = `
+  .active-magic {
+    text-decoration: underline;
+  }
+`;
+      document.head.appendChild(style);
+
+      // Показ картинки рядом с активным словом
+      function showMagicImage(el) {
+        const img = new Image();
+        img.src = `../exp/${el.dataset.img}.png`;
+        img.className = 'magic-popup';
+        img.style.position = 'absolute';
+        img.style.pointerEvents = 'none';
+        img.style.zIndex = 999;
+        img.style.imageRendering = 'auto';
+
+        img.onload = () => {
+          const realW = img.naturalWidth;
+          const realH = img.naturalHeight;
+          img.style.width = realW / 2 + 'px';
+          img.style.height = realH / 2 + 'px';
+
+          // позиция — рядом со словом
+          const rect = el.getBoundingClientRect();
+          img.style.left = `${rect.left + window.scrollX + 20}px`;
+          img.style.top = `${rect.top + window.scrollY + 20}px`;
+
+          document.body.appendChild(img);
+        };
+      }
+
+      // Удалить текущую всплывающую картинку
+      function removeMagicImage() {
+        const existing = document.querySelector('.magic-popup');
+        if (existing) existing.remove();
+      }
+
+
+
+    </script>
+
+  </main>
+
+  <script>
+    // --- Подгрузка текста в секции General с кэшем ---
+    const cacheKey = 'general-text-cache';
+    const cacheTimeKey = 'general-text-cache-time';
+    const cacheTTL = 2 * 60 * 1000; // 2 минуты
+    const cached = localStorage.getItem(cacheKey);
+    const cachedTime = localStorage.getItem(cacheTimeKey);
+    const now = Date.now();
+
+    if (cached && cachedTime && now - cachedTime < cacheTTL) {
+      document.getElementById('general-text').innerHTML = cached;
+    } else {
+      fetch('../text/text_general.txt')
+        .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить текст'))
+        .then(text => {
+          const words = text.trim().split(/\s+/);
+          if (words.length >= 2) {
+            const linkText = words.slice(-2).join(' ');
+            const mainText = words.slice(0, -2).join(' ');
+            const html = `${mainText} <a href="https://t.me/javiejacie" target="_blank">${linkText}</a>`;
+            document.getElementById('general-text').innerHTML = html;
+          } else {
+            document.getElementById('general-text').textContent = text;
+          }
+        })
+        .catch(err => {
+          document.getElementById('general-text').textContent = 'Ошибка: ' + err;
+        });
+
+    }
+    setInterval(() => {
+      localStorage.removeItem(cacheKey);
+      localStorage.removeItem(cacheTimeKey);
+    }, cacheTTL);
+
+    // --- Подгрузка скиллсета ---
+    fetch('../text/text_skillset.txt')
+      .then(res => res.ok ? res.text() : Promise.reject('Не удалось загрузить скиллсет'))
+      .then(text => {
+        const blocks = text.split('\n').filter(Boolean);
+        const container = document.getElementById('skills-grid');
+        blocks.forEach((line, i) => {
+          const [title, desc] = line.split('.');
+          const block = document.createElement('div');
+          block.className = 'skill-block';
+          block.innerHTML = `
+          <img src="../pics/icons/i${i + 1}.svg" alt="icon">
+          <h3 class="text-small-black">${title.trim()}</h3>
+          <p class="text-small-gray">${desc.trim().replace(/[^.]\s*$/, '$&.')}</p>
+        `;
+          container.appendChild(block);
+        });
+      })
+      .catch(err => {
+        document.getElementById('skills-grid').textContent = 'Ошибка: ' + err;
+      });
+
+    // --- Подгрузка портфолио с подписями ---
+    const tabElements = document.querySelectorAll('.tabs .tab');
+    const folioGrid = document.getElementById('folio-grid');
+
+    // Функция для загрузки текстов для hover (folio1.txt, folio2.txt, folio3.txt)
+    function fetchFolioTexts(type) {
+      let fileName;
+      if (type === 'i') {
+        fileName = 'folio1.txt';
+      } else if (type === 'b') {
+        fileName = 'folio2.txt';
+      } else if (type === 'g') {
+        fileName = 'folio3.txt';
+      } else {
+        fileName = 'folio1.txt';
+      }
+      return fetch(`../text/${fileName}`)
+        .then(res => res.ok ? res.text() : Promise.reject(`${fileName} not found`))
+        .then(text => text.split('.').map(t => t.trim()).filter(t => t.length));
+    }
+
+    function loadFolio(type) {
+      folioGrid.innerHTML = '';
+      let count = type === 'b' ? 8 : 20;
+      fetchFolioTexts(type)
+        .then(folioTexts => {
+          for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.className = 'folio-item';
+            const img = document.createElement('img');
+            img.src = `../pics/folio/p_${type}_${i}.png`;
+            const caption = document.createElement('div');
+            caption.className = 'folio-caption';
+            caption.textContent = folioTexts[i - 1] || '';
+            div.appendChild(img);
+            div.appendChild(caption);
+            folioGrid.appendChild(div);
+          }
+        })
+        .catch(err => {
+          folioGrid.textContent = 'Ошибка: ' + err;
+        });
+    }
+    // Загружаем по умолчанию раздел "Интерфейсы"
+    loadFolio('i');
+
+    // Обработчик для табов портфолио
+    tabElements.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabElements.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        loadFolio(tab.dataset.type);
+        updateHeaderTabsActive();
+      });
+    });
+
+
+
+    // --- Эффект с фото курсора ---
+    /*const totalImages = 25;
+    let lastX = 0;
+    let lastY = 0;
+    let photoQueue = [];
+    let idleTimeout;
+    let isClearing = false;
+    let cancelClear = false;
+    
+    function clearOldPhotos() {
+      if (cancelClear) {
+        isClearing = false;
+        cancelClear = false;
+        return;
+      }
+      if (photoQueue.length === 0) {
+        isClearing = false;
+        return;
+      }
+      const img = photoQueue.shift();
+      if (img && img.parentNode) {
+        img.remove();
+      }
+      setTimeout(clearOldPhotos, 20);
+    }
+    
+    document.addEventListener('mousemove', (e) => {
+      const dx = Math.abs(e.pageX - lastX);
+      const dy = Math.abs(e.pageY - lastY);
+      if (dx > 0 || dy > 0) {
+        clearTimeout(idleTimeout);
+        cancelClear = true;
+        idleTimeout = setTimeout(() => {
+          if (!isClearing) {
+            isClearing = true;
+            cancelClear = false;
+            clearOldPhotos();
+          }
+        }, 20);
+      }
+      if (dx >= 10 || dy >= 10) {
+        const img = document.createElement('img');
+        img.className = 'floating-image';
+        const number = Math.floor(Math.random() * totalImages) + 1;
+        img.src = `../pics/me/${number}.png`;
+        img.style.left = `${e.pageX + 20}px`;
+        img.style.top = `${e.pageY + 20}px`;
+        img.style.width = '200px';
+        img.style.height = '200px';
+        document.body.appendChild(img);
+        photoQueue.push(img);
+        lastX = e.pageX;
+        lastY = e.pageY;
+      }
+    });
+    */
+
+    // --- Плавный скролл по навигационным ссылкам ---
+    document.querySelectorAll('header a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          const headerOffset = 100; // смещение, чтобы контент не скрывался под хедером
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+
+    // === СЛОТ-АНИМАЦИЯ СМЕНЫ КАРТИНКИ В #GENERAL ===
+    const generalImg = document.getElementById('general-photo');
+    const totalGeneralImages = 25;
+
+    function getRandomImageSrc() {
+      const index = Math.floor(Math.random() * totalGeneralImages) + 1;
+      return `../pics/me/${index}.png`;
+    }
+
+    function animateSlotLikeChange(duration = 2500, steps = 20) {
+      let currentStep = 0;
+
+      function easing(t) {
+        // Настраиваем торможение — в 2 раза быстрее
+        return t < 0.6
+          ? 2 * t * t                   // ускорение — дольше
+          : 1 - Math.pow(1 - t, 3) * 0.5; // замедление — быстрее
+      }
+
+      function step() {
+        const t = currentStep / steps;
+        generalImg.src = getRandomImageSrc();
+
+        currentStep++;
+        if (currentStep <= steps) {
+          const easedT = easing(t);
+          const delay = 50 + easedT * 300; // по-прежнему регулирует паузы
+          setTimeout(step, delay);
+        }
+      }
+
+      step();
+    }
+
+    // Запускаем сразу при загрузке
+    animateSlotLikeChange();
+
+    // И каждые 20 секунд повторяем
+    setInterval(() => {
+      animateSlotLikeChange();
+    }, 20000);
+
+
+
+  </script>
+</body>
+
+</html>
